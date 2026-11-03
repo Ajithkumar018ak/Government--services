@@ -1,0 +1,543 @@
+
+/* =========================================================
+   CIVICCONNECT — APPLE STYLE SCROLL ANIMATIONS
+   Cinematic • Smooth • Premium • 3D
+========================================================= */
+
+:root {
+    --scroll-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* GLOBAL SCROLL */
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* =========================================================
+   BASE REVEAL ANIMATION
+========================================================= */
+
+[data-reveal] {
+    opacity: 0;
+    transition:
+        opacity 1s var(--scroll-ease),
+        transform 1.1s var(--scroll-ease),
+        filter 1s var(--scroll-ease);
+
+    will-change: transform, opacity;
+}
+
+[data-reveal="up"] {
+    transform: translate3d(0, 75px, 0);
+}
+
+[data-reveal="down"] {
+    transform: translate3d(0, -65px, 0);
+}
+
+[data-reveal="left"] {
+    transform: translate3d(-90px, 0, 0);
+}
+
+[data-reveal="right"] {
+    transform: translate3d(90px, 0, 0);
+}
+
+[data-reveal="zoom"] {
+    transform: scale(.82);
+    filter: blur(8px);
+}
+
+[data-reveal="rotate"] {
+    transform: perspective(1000px) rotateX(12deg) translateY(60px);
+}
+
+[data-reveal].is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1) rotateX(0);
+    filter: blur(0);
+}
+
+/* =========================================================
+   STAGGER ANIMATION
+========================================================= */
+
+[data-stagger] > * {
+    opacity: 0;
+    transform: translateY(45px);
+    transition:
+        opacity .8s var(--scroll-ease),
+        transform .9s var(--scroll-ease);
+}
+
+[data-stagger].is-visible > * {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+[data-stagger].is-visible > *:nth-child(1) {
+    transition-delay: .08s;
+}
+
+[data-stagger].is-visible > *:nth-child(2) {
+    transition-delay: .16s;
+}
+
+[data-stagger].is-visible > *:nth-child(3) {
+    transition-delay: .24s;
+}
+
+[data-stagger].is-visible > *:nth-child(4) {
+    transition-delay: .32s;
+}
+
+[data-stagger].is-visible > *:nth-child(5) {
+    transition-delay: .40s;
+}
+
+[data-stagger].is-visible > *:nth-child(6) {
+    transition-delay: .48s;
+}
+
+/* =========================================================
+   APPLE STYLE SECTION HEADING
+========================================================= */
+
+.section-heading h2,
+.digital-governance-content h2,
+.support-content h2 {
+    opacity: 0;
+    transform: translateY(45px);
+    transition: 1s var(--scroll-ease);
+}
+
+.section-heading.is-visible h2,
+.digital-governance-content.is-visible h2,
+.support-content.is-visible h2 {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section-heading p {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: .9s .2s var(--scroll-ease);
+}
+
+.section-heading.is-visible p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================================================
+   CINEMATIC IMAGE REVEAL
+========================================================= */
+
+[data-image-reveal] {
+    overflow: hidden;
+    position: relative;
+}
+
+[data-image-reveal] img {
+    transform: scale(1.2);
+    transition: transform 1.8s var(--scroll-ease);
+    will-change: transform;
+}
+
+[data-image-reveal].is-visible img {
+    transform: scale(1);
+}
+
+/* IMAGE HOVER DEPTH */
+
+.service-card,
+.scheme-card,
+.document-card,
+.benefit-card {
+    transform-style: preserve-3d;
+    transition:
+        transform .65s var(--scroll-ease),
+        box-shadow .65s var(--scroll-ease);
+}
+
+@media (hover: hover) {
+    .service-card:hover,
+    .scheme-card:hover,
+    .document-card:hover,
+    .benefit-card:hover {
+        transform: translateY(-9px);
+    }
+}
+
+/* =========================================================
+   PARALLAX IMAGE
+========================================================= */
+
+[data-parallax] img {
+    transition: transform .15s linear;
+    will-change: transform;
+}
+
+/* =========================================================
+   HERO CINEMATIC EFFECT
+========================================================= */
+
+.hero-slide img {
+    transform: scale(1.15);
+    transition: transform 7s cubic-bezier(.2, .6, .3, 1);
+}
+
+.hero-slide.active img {
+    transform: scale(1);
+}
+
+.hero-content > * {
+    animation: heroContentReveal 1s var(--scroll-ease) both;
+}
+
+.hero-content > *:nth-child(1) {
+    animation-delay: .3s;
+}
+
+.hero-content > *:nth-child(2) {
+    animation-delay: .45s;
+}
+
+.hero-content > *:nth-child(3) {
+    animation-delay: .6s;
+}
+
+.hero-content > *:nth-child(4) {
+    animation-delay: .75s;
+}
+
+.hero-content > *:nth-child(5) {
+    animation-delay: .9s;
+}
+
+@keyframes heroContentReveal {
+    from {
+        opacity: 0;
+        transform: translateY(45px);
+        filter: blur(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+/* =========================================================
+   DIGITAL GOVERNANCE IMAGE DEPTH
+========================================================= */
+
+.digital-governance-visual {
+    perspective: 1200px;
+}
+
+.digital-governance-visual img {
+    transition: transform 1.2s var(--scroll-ease);
+}
+
+.digital-governance-visual.is-visible img {
+    animation: imageDepthReveal 1.4s var(--scroll-ease) both;
+}
+
+@keyframes imageDepthReveal {
+    from {
+        opacity: 0;
+        transform: translateY(60px) rotateY(-8deg) scale(.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) rotateY(0) scale(1);
+    }
+}
+
+/* =========================================================
+   FINAL CTA REVEAL
+========================================================= */
+
+.final-cta-content {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: 1s var(--scroll-ease);
+}
+
+.final-cta-section.is-visible .final-cta-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.final-cta-icon {
+    transition: transform 1.2s var(--scroll-ease);
+}
+
+.final-cta-section.is-visible .final-cta-icon {
+    transform: rotateY(360deg);
+}
+
+/* =========================================================
+   SCROLL PROGRESS SUPPORT
+========================================================= */
+
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, #d69b39, #f2c879);
+    z-index: 99999;
+    transition: width .08s linear;
+}
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+    }
+
+    [data-reveal],
+    [data-stagger] > *,
+    .section-heading h2,
+    .section-heading p {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+    }
+}
+
+/* MOBILE OPTIMIZATION */
+
+@media (max-width: 768px) {
+
+    [data-reveal="left"],
+    [data-reveal="right"] {
+        transform: translateY(40px);
+    }
+
+    [data-reveal="zoom"] {
+        transform: scale(.94);
+    }
+
+    [data-parallax] img {
+        transform: none !important;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   CIVICCONNECT - ABOUT CINEMATIC ANIMATIONS
+========================================================= */
+
+/* HERO TEXT ENTRANCE */
+
+.about-hero-copy > * {
+    opacity: 0;
+    animation: aboutTextReveal .85s ease forwards;
+}
+
+.about-hero-copy .about-eyebrow {
+    animation-delay: .15s;
+}
+
+.about-hero-copy h1 {
+    animation-delay: .3s;
+}
+
+.about-hero-copy .about-hero-description {
+    animation-delay: .48s;
+}
+
+.about-hero-copy .about-hero-actions {
+    animation-delay: .65s;
+}
+
+.about-hero-copy .about-hero-note {
+    animation-delay: .8s;
+}
+
+@keyframes aboutTextReveal {
+    from {
+        opacity: 0;
+        transform: translateY(32px);
+        filter: blur(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+/* PARLIAMENT 3D FLOAT */
+
+.parliament-scene {
+    transform-style: preserve-3d;
+}
+
+.parliament-building {
+    transform-style: preserve-3d;
+    animation: parliament3DFloat 6s ease-in-out infinite;
+}
+
+@keyframes parliament3DFloat {
+    0%, 100% {
+        transform: translate3d(0, 0, 0) rotateY(-13deg) rotateX(5deg);
+    }
+
+    50% {
+        transform: translate3d(0, -19px, 25px) rotateY(-5deg) rotateX(2deg);
+    }
+}
+
+@keyframes parliamentGlow {
+    from {
+        opacity: .45;
+        transform: scale(.9);
+    }
+
+    to {
+        opacity: .9;
+        transform: scale(1.12);
+    }
+}
+
+/* HERO SLIDER */
+
+.about-hero-bg img.active {
+    animation: aboutHeroImageZoom 7s ease forwards;
+}
+
+@keyframes aboutHeroImageZoom {
+    from {
+        transform: scale(1.12);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+/* HERO INDICATOR */
+
+.about-slide-line span {
+    transition: width linear;
+}
+
+/* SCROLL REVEAL */
+
+.about-reveal,
+.about-reveal-left,
+.about-reveal-right,
+.about-reveal-scale {
+    opacity: 0;
+    transition:
+        opacity .8s ease,
+        transform .8s cubic-bezier(.2, .7, .2, 1);
+}
+
+.about-reveal {
+    transform: translateY(35px);
+}
+
+.about-reveal-left {
+    transform: translateX(-45px);
+}
+
+.about-reveal-right {
+    transform: translateX(45px);
+}
+
+.about-reveal-scale {
+    transform: scale(.92);
+}
+
+.about-reveal.visible,
+.about-reveal-left.visible,
+.about-reveal-right.visible,
+.about-reveal-scale.visible {
+    opacity: 1;
+    transform: translate(0) scale(1);
+}
+
+/* STAGGERED CARDS */
+
+.about-trust-item,
+.about-stat,
+.about-purpose-card,
+.about-value-card,
+.about-digital-card {
+    transition-delay: 0s;
+}
+
+.about-values-grid .about-value-card:nth-child(2),
+.about-digital-grid .about-digital-card:nth-child(2) {
+    transition-delay: .1s;
+}
+
+.about-values-grid .about-value-card:nth-child(3),
+.about-digital-grid .about-digital-card:nth-child(3) {
+    transition-delay: .2s;
+}
+
+.about-values-grid .about-value-card:nth-child(4) {
+    transition-delay: .15s;
+}
+
+.about-values-grid .about-value-card:nth-child(5) {
+    transition-delay: .25s;
+}
+
+.about-values-grid .about-value-card:nth-child(6) {
+    transition-delay: .35s;
+}
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .about-hero-copy > *,
+    .parliament-building,
+    .parliament-glow,
+    .about-hero-bg img {
+        animation: none !important;
+    }
+
+    .about-reveal,
+    .about-reveal-left,
+    .about-reveal-right,
+    .about-reveal-scale {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}

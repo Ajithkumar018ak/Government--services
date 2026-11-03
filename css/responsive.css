@@ -1,0 +1,3037 @@
+/* =========================================================
+   CIVICCONNECT - COMPLETE RESPONSIVE STYLESHEET
+   TABLET / MOBILE / SMALL MOBILE
+========================================================= */
+
+/* =========================================================
+   01. LARGE LAPTOP
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    :root {
+        --container: 1080px;
+    }
+
+    .main-navigation {
+        gap: 17px;
+    }
+
+    .nav-link {
+        font-size: 12px;
+    }
+
+    .header-container {
+        gap: 15px;
+    }
+
+    .schemes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-main {
+        gap: 30px;
+    }
+
+    .hero-container {
+        gap: 35px;
+    }
+
+}
+
+/* =========================================================
+   02. TABLET LANDSCAPE
+========================================================= */
+
+@media (max-width: 1024px) {
+
+    :root {
+        --header-height: 75px;
+    }
+
+    .container {
+        width: min(100% - 40px, 900px);
+    }
+
+    .main-navigation {
+        gap: 13px;
+    }
+
+    .nav-link {
+        font-size: 11px;
+    }
+
+    .brand-name {
+        font-size: 16px;
+    }
+
+    .brand-subtitle {
+        font-size: 7px;
+    }
+
+    .header-actions {
+        gap: 8px;
+    }
+
+    .login-button {
+        padding: 0 13px;
+    }
+
+    .hero-section {
+        min-height: 650px;
+    }
+
+    .hero-container {
+        grid-template-columns: 1fr 0.8fr;
+        gap: 25px;
+    }
+
+    .hero-content h1 {
+        font-size: 52px;
+    }
+
+    .hero-search-card {
+        padding: 22px;
+    }
+
+    .quick-access-item {
+        padding-inline: 12px;
+    }
+
+    .quick-access-item strong {
+        font-size: 11px;
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .document-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-main {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 40px;
+    }
+
+    .digital-governance-container {
+        gap: 40px;
+    }
+
+    .support-container {
+        gap: 35px;
+    }
+
+}
+
+/* =========================================================
+   03. TABLET PORTRAIT
+========================================================= */
+
+@media (max-width: 850px) {
+
+    .main-navigation {
+        display: none;
+    }
+
+    .mobile-menu-btn {
+        display: grid;
+    }
+
+    .header-container {
+        justify-content: space-between;
+    }
+
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        padding-top: 80px;
+        padding-bottom: 110px;
+    }
+
+    .hero-content {
+        max-width: 700px;
+    }
+
+    .hero-search-card {
+        justify-self: start;
+        max-width: 560px;
+    }
+
+    .hero-section {
+        min-height: auto;
+    }
+
+    .quick-access-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .quick-access-item:nth-child(2) {
+        border-right: 0;
+    }
+
+    .quick-access-item:nth-child(-n+2) {
+        border-bottom: 1px solid var(--border);
+    }
+
+    .online-services-layout {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .online-services-image {
+        min-height: 350px;
+    }
+
+    .online-services-image > img {
+        height: 100%;
+    }
+
+    .digital-governance-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .digital-governance-visual {
+        min-height: 380px;
+    }
+
+    .digital-governance-visual > img {
+        height: 380px;
+    }
+
+    .governance-floating-card {
+        left: 20px;
+    }
+
+    .announcements-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .announcement-featured {
+        min-height: 400px;
+    }
+
+    .support-container {
+        grid-template-columns: 1fr;
+    }
+
+    .support-image {
+        width: min(100%, 600px);
+    }
+
+    .support-image-card {
+        right: 15px;
+    }
+
+    .accessibility-container {
+        flex-wrap: wrap;
+    }
+
+    .accessibility-content {
+        flex-basis: calc(100% - 100px);
+    }
+
+    .accessibility-link {
+        margin-left: 95px;
+    }
+
+    .final-cta-icon {
+        width: 130px;
+        height: 130px;
+        font-size: 55px;
+    }
+
+    .resources-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+/* =========================================================
+   04. MOBILE - 768PX
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .section {
+        padding: 75px 0;
+    }
+
+    .container {
+        width: calc(100% - 36px);
+    }
+
+    .section-heading {
+        margin-bottom: 35px;
+    }
+
+    .section-heading h2 {
+        font-size: 32px;
+        letter-spacing: -1px;
+    }
+
+    .section-heading p {
+        font-size: 13px;
+    }
+
+    /* HEADER */
+
+    .site-header {
+        height: 70px;
+    }
+
+    .brand-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    .brand-name {
+        font-size: 15px;
+    }
+
+    .brand-subtitle {
+        font-size: 7px;
+    }
+
+    .header-search {
+        width: 39px;
+        height: 39px;
+    }
+
+    .login-button {
+        height: 39px;
+        padding: 0 12px;
+        font-size: 11px;
+    }
+
+    .mobile-menu-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    /* HERO */
+
+    .hero-container {
+        padding-top: 65px;
+        padding-bottom: 105px;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(39px, 8vw, 55px);
+        letter-spacing: -1.8px;
+    }
+
+    .hero-content > p {
+        font-size: 13px;
+    }
+
+    .hero-label {
+        font-size: 9px;
+        letter-spacing: 1px;
+    }
+
+    .hero-actions {
+        gap: 10px;
+    }
+
+    .hero-actions .btn {
+        min-height: 47px;
+        padding-inline: 17px;
+        font-size: 11px;
+    }
+
+    .hero-trust {
+        margin-top: 30px;
+    }
+
+    .hero-search-card {
+        max-width: 100%;
+        padding: 22px;
+    }
+
+    .hero-search-heading h3 {
+        font-size: 15px;
+    }
+
+    .hero-search-heading p {
+        font-size: 10px;
+    }
+
+    .hero-slider-controls {
+        bottom: 23px;
+        left: 18px;
+    }
+
+    .hero-bottom-tag {
+        right: 18px;
+        bottom: 35px;
+    }
+
+    /* QUICK ACCESS */
+
+    .quick-access-item {
+        min-height: 75px;
+        padding: 10px;
+        gap: 9px;
+    }
+
+    .quick-access-icon {
+        width: 39px;
+        height: 39px;
+        font-size: 16px;
+    }
+
+    .quick-access-item strong {
+        font-size: 10px;
+    }
+
+    .quick-access-item small {
+        font-size: 9px;
+    }
+
+    .quick-arrow {
+        display: none;
+    }
+
+    /* SERVICES */
+
+    .services-grid {
+        gap: 17px;
+    }
+
+    .service-image {
+        height: 180px;
+    }
+
+    .service-content {
+        padding: 20px;
+    }
+
+    .service-content h3 {
+        font-size: 16px;
+    }
+
+    .service-content p {
+        min-height: 90px;
+        font-size: 11px;
+    }
+
+    /* SCHEMES */
+
+    .schemes-grid {
+        gap: 17px;
+    }
+
+    .scheme-image {
+        height: 165px;
+    }
+
+    .scheme-content {
+        padding: 22px 17px;
+    }
+
+    .scheme-content h3 {
+        font-size: 14px;
+    }
+
+    .scheme-content p {
+        min-height: 110px;
+        font-size: 10px;
+    }
+
+    /* STEPS */
+
+    .steps-grid {
+        gap: 15px;
+    }
+
+    .step-card {
+        padding: 24px 18px;
+    }
+
+    .step-card h3 {
+        font-size: 14px;
+    }
+
+    /* BENEFITS */
+
+    .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .benefit-card {
+        padding: 22px 18px;
+    }
+
+    .benefit-card h3 {
+        font-size: 15px;
+    }
+
+    .benefit-card p {
+        font-size: 11px;
+    }
+
+    /* DOCUMENTS */
+
+    .document-card {
+        padding: 23px 18px;
+    }
+
+    .document-card h3 {
+        font-size: 14px;
+    }
+
+    .document-card p {
+        min-height: 115px;
+        font-size: 10px;
+    }
+
+    /* DEPARTMENTS */
+
+    .department-card {
+        padding: 13px;
+        gap: 10px;
+    }
+
+    .department-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 17px;
+    }
+
+    .department-info strong {
+        font-size: 11px;
+    }
+
+    .department-info small {
+        font-size: 9px;
+    }
+
+    /* ANNOUNCEMENTS */
+
+    .announcement-featured {
+        min-height: 370px;
+    }
+
+    .announcement-featured-content {
+        padding: 22px;
+    }
+
+    .announcement-featured-content h3 {
+        font-size: 20px;
+    }
+
+    .announcement-item {
+        padding: 13px;
+        gap: 12px;
+    }
+
+    .announcement-details h3 {
+        font-size: 12px;
+    }
+
+    .announcement-details p {
+        font-size: 9px;
+    }
+
+    /* SUPPORT */
+
+    .support-content h2 {
+        font-size: 34px;
+    }
+
+    .support-content > p {
+        font-size: 12px;
+    }
+
+    .support-image,
+    .support-image > img {
+        min-height: 320px;
+        height: 320px;
+    }
+
+    /* FAQ */
+
+    .faq-item summary {
+        min-height: 60px;
+        padding: 13px 15px;
+        font-size: 12px;
+    }
+
+    .faq-answer {
+        padding: 0 15px 16px;
+        font-size: 11px;
+    }
+
+    /* ACCESSIBILITY */
+
+    .accessibility-container {
+        gap: 15px;
+    }
+
+    .accessibility-icon {
+        width: 55px;
+        height: 55px;
+        font-size: 24px;
+    }
+
+    .accessibility-content {
+        flex-basis: calc(100% - 70px);
+    }
+
+    .accessibility-content h2 {
+        font-size: 18px;
+    }
+
+    .accessibility-link {
+        margin-left: 70px;
+    }
+
+    /* FINAL CTA */
+
+    .final-cta-section {
+        padding: 55px 0;
+    }
+
+    .final-cta-content h2 {
+        font-size: 32px;
+    }
+
+    .final-cta-icon {
+        width: 105px;
+        height: 105px;
+        font-size: 43px;
+    }
+
+    /* FOOTER */
+
+    .site-footer {
+        padding-top: 55px;
+    }
+
+    .footer-main {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 35px 25px;
+    }
+
+    .footer-bottom {
+        flex-wrap: wrap;
+        padding: 20px 0;
+    }
+
+}
+
+/* =========================================================
+   05. MOBILE - 600PX
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .container {
+        width: calc(100% - 32px);
+    }
+
+    /* HEADER */
+
+    .brand {
+        gap: 8px;
+    }
+
+    .brand-icon {
+        width: 37px;
+        height: 37px;
+        font-size: 17px;
+    }
+
+    .brand-name {
+        font-size: 13px;
+    }
+
+    .brand-subtitle {
+        font-size: 6px;
+        letter-spacing: 0.7px;
+    }
+
+    .header-actions {
+        gap: 7px;
+    }
+
+    .login-button {
+        padding: 0 10px;
+        gap: 6px;
+    }
+
+    .login-button i {
+        font-size: 11px;
+    }
+
+    /* HERO */
+
+    .hero-container {
+        padding-top: 55px;
+        padding-bottom: 100px;
+    }
+
+    .hero-content h1 {
+        font-size: 40px;
+    }
+
+    .hero-content > p {
+        font-size: 12px;
+        line-height: 1.8;
+    }
+
+    .hero-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+        min-height: 48px;
+        padding: 8px 10px;
+        gap: 6px;
+        font-size: 10px;
+    }
+
+    .hero-search-card {
+        padding: 18px;
+    }
+
+    .hero-search-heading {
+        gap: 10px;
+    }
+
+    .search-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    .hero-search-heading h3 {
+        font-size: 13px;
+    }
+
+    .hero-search-form {
+        min-height: 48px;
+    }
+
+    .hero-search-form input {
+        font-size: 10px;
+    }
+
+    .hero-search-form button {
+        padding-inline: 12px;
+        font-size: 10px;
+    }
+
+    .popular-searches {
+        gap: 8px;
+        font-size: 9px;
+    }
+
+    /* QUICK ACCESS */
+
+    .quick-access-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .quick-access-item {
+        min-height: 72px;
+        padding: 8px 5px;
+        gap: 7px;
+    }
+
+    .quick-access-icon {
+        width: 34px;
+        height: 34px;
+        font-size: 14px;
+    }
+
+    .quick-access-item strong {
+        font-size: 9px;
+    }
+
+    .quick-access-item small {
+        font-size: 8px;
+    }
+
+    /* SECTION HEADING */
+
+    .section {
+        padding: 65px 0;
+    }
+
+    .section-heading h2 {
+        font-size: 28px;
+    }
+
+    .section-heading p {
+        font-size: 12px;
+    }
+
+    .eyebrow {
+        font-size: 9px;
+        letter-spacing: 1.3px;
+    }
+
+    /* CARDS */
+
+    .services-grid,
+    .schemes-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .service-image {
+        height: 220px;
+    }
+
+    .service-content p {
+        min-height: auto;
+    }
+
+    .scheme-image {
+        height: 205px;
+    }
+
+    .scheme-content p {
+        min-height: auto;
+    }
+
+    .service-content {
+        padding: 22px;
+    }
+
+    .scheme-content {
+        padding: 22px;
+    }
+
+    /* ONLINE SERVICES */
+
+    .online-services-image {
+        min-height: 280px;
+    }
+
+    .online-image-caption {
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        padding: 12px;
+    }
+
+    .online-service-item {
+        min-height: 75px;
+        padding: 11px;
+        gap: 10px;
+    }
+
+    .online-service-icon {
+        width: 39px;
+        height: 39px;
+        font-size: 16px;
+    }
+
+    .online-service-text strong {
+        font-size: 11px;
+    }
+
+    .online-service-text small {
+        font-size: 9px;
+    }
+
+    /* DIGITAL GOVERNANCE */
+
+    .digital-governance-content h2 {
+        font-size: 31px;
+    }
+
+    .digital-governance-content > p {
+        font-size: 12px;
+    }
+
+    .digital-governance-visual,
+    .digital-governance-visual > img {
+        min-height: 290px;
+        height: 290px;
+    }
+
+    .governance-floating-card {
+        left: 10px;
+        bottom: 12px;
+        min-width: 210px;
+        padding: 12px;
+    }
+
+    /* HOW IT WORKS */
+
+    .steps-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .step-card {
+        padding: 23px;
+    }
+
+    .step-card p {
+        font-size: 11px;
+    }
+
+    /* DOCUMENTS */
+
+    .document-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .document-card {
+        padding: 23px;
+    }
+
+    .document-card p {
+        min-height: auto;
+    }
+
+    /* BENEFITS */
+
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .benefit-card {
+        padding: 23px;
+    }
+
+    /* DEPARTMENTS */
+
+    .department-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .department-card {
+        min-height: 80px;
+    }
+
+    /* ANNOUNCEMENTS */
+
+    .announcement-featured {
+        min-height: 340px;
+    }
+
+    .announcement-featured-content h3 {
+        font-size: 18px;
+    }
+
+    .announcement-item {
+        align-items: flex-start;
+    }
+
+    .announcement-date {
+        width: 46px;
+        height: 52px;
+    }
+
+    .announcement-date span {
+        font-size: 17px;
+    }
+
+    .announcement-item > i {
+        margin-top: 10px;
+    }
+
+    /* SUPPORT */
+
+    .support-content h2 {
+        font-size: 30px;
+    }
+
+    .support-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .support-actions .btn {
+        width: 100%;
+    }
+
+    .support-image,
+    .support-image > img {
+        min-height: 270px;
+        height: 270px;
+    }
+
+    .support-image-card {
+        right: 8px;
+        bottom: 10px;
+        padding: 11px;
+    }
+
+    /* ACCESSIBILITY */
+
+    .accessibility-container {
+        align-items: flex-start;
+    }
+
+    .accessibility-content h2 {
+        font-size: 16px;
+    }
+
+    .accessibility-content p {
+        font-size: 10px;
+    }
+
+    .accessibility-link {
+        margin-left: 70px;
+        font-size: 11px;
+    }
+
+    /* RESOURCES */
+
+    .resources-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .resource-card {
+        min-height: 75px;
+    }
+
+    /* FINAL CTA */
+
+    .final-cta-container {
+        align-items: flex-start;
+    }
+
+    .final-cta-content h2 {
+        font-size: 27px;
+    }
+
+    .final-cta-content p {
+        font-size: 11px;
+    }
+
+    .final-cta-icon {
+        width: 75px;
+        height: 75px;
+        font-size: 30px;
+    }
+
+    .final-cta-content .btn {
+        min-height: 45px;
+        padding-inline: 14px;
+        font-size: 10px;
+    }
+
+    /* FOOTER */
+
+    .footer-main {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px 18px;
+    }
+
+    .footer-about {
+        grid-column: 1 / -1;
+    }
+
+    .footer-about > p {
+        max-width: 100%;
+    }
+
+    .footer-column h3 {
+        font-size: 12px;
+    }
+
+    .footer-column a {
+        font-size: 10px;
+    }
+
+    .footer-disclaimer {
+        padding: 16px;
+    }
+
+    .footer-disclaimer p {
+        font-size: 9px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .footer-legal-links {
+        flex-wrap: wrap;
+        gap: 12px 18px;
+    }
+
+    .back-to-top {
+        align-self: flex-end;
+    }
+
+}
+
+/* =========================================================
+   06. SMALL MOBILE - 420PX
+========================================================= */
+
+@media (max-width: 420px) {
+
+    :root {
+        --header-height: 65px;
+    }
+
+    .container {
+        width: calc(100% - 28px);
+    }
+
+    .site-header {
+        height: 65px;
+    }
+
+    .brand-icon {
+        width: 34px;
+        height: 34px;
+        font-size: 15px;
+    }
+
+    .brand-name {
+        font-size: 12px;
+    }
+
+    .brand-subtitle {
+        font-size: 5.5px;
+    }
+
+    .header-search {
+        width: 34px;
+        height: 34px;
+        font-size: 12px;
+    }
+
+    .login-button {
+        width: 35px;
+        height: 35px;
+        justify-content: center;
+        padding: 0;
+    }
+
+    .login-button span {
+        display: none;
+    }
+
+    .mobile-menu-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+
+    .hero-content h1 {
+        font-size: 35px;
+    }
+
+    .hero-label {
+        font-size: 8px;
+        padding: 8px 10px;
+    }
+
+    .hero-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-actions .btn {
+        min-height: 45px;
+    }
+
+    .hero-search-heading h3 {
+        font-size: 12px;
+    }
+
+    .hero-search-form button {
+        padding-inline: 9px;
+    }
+
+    .hero-search-form button i {
+        display: none;
+    }
+
+    .hero-bottom-tag {
+        display: none;
+    }
+
+    .hero-slider-controls {
+        bottom: 20px;
+    }
+
+    .section-heading h2 {
+        font-size: 26px;
+    }
+
+    .service-image {
+        height: 190px;
+    }
+
+    .scheme-image {
+        height: 180px;
+    }
+
+    .online-services-image {
+        min-height: 240px;
+    }
+
+    .announcement-featured {
+        min-height: 320px;
+    }
+
+    .announcement-featured-content h3 {
+        font-size: 16px;
+    }
+
+    .support-content h2 {
+        font-size: 27px;
+    }
+
+    .faq-item summary {
+        font-size: 11px;
+    }
+
+    .final-cta-container {
+        flex-direction: column;
+    }
+
+    .final-cta-icon {
+        display: none;
+    }
+
+    .footer-main {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-about {
+        grid-column: auto;
+    }
+
+    .footer-column {
+        gap: 11px;
+    }
+
+    .footer-column h3 {
+        margin-bottom: 4px;
+    }
+
+    .login-modal-content {
+        padding: 28px 20px;
+    }
+
+    .login-modal-header h2 {
+        font-size: 20px;
+    }
+
+    .search-modal-content {
+        padding: 35px 20px 25px;
+    }
+
+    .search-modal-content h2 {
+        font-size: 23px;
+    }
+
+    .global-search-form {
+        gap: 8px;
+        padding-left: 10px;
+    }
+
+    .global-search-form input {
+        font-size: 10px;
+    }
+
+    .global-search-form button {
+        padding-inline: 12px;
+        font-size: 10px;
+    }
+
+}
+
+/* =========================================================
+   07. VERY SMALL MOBILE - 350PX
+========================================================= */
+
+@media (max-width: 350px) {
+
+    .container {
+        width: calc(100% - 22px);
+    }
+
+    .brand-name {
+        font-size: 10px;
+    }
+
+    .brand-subtitle {
+        font-size: 5px;
+    }
+
+    .header-actions {
+        gap: 5px;
+    }
+
+    .hero-content h1 {
+        font-size: 31px;
+    }
+
+    .quick-access-item {
+        gap: 5px;
+    }
+
+    .quick-access-icon {
+        width: 29px;
+        height: 29px;
+        font-size: 12px;
+    }
+
+    .quick-access-item strong {
+        font-size: 8px;
+    }
+
+    .quick-access-item small {
+        font-size: 7px;
+    }
+
+    .section-heading h2 {
+        font-size: 23px;
+    }
+
+    .hero-search-card {
+        padding: 14px;
+    }
+
+    .hero-search-form input {
+        padding-inline: 8px;
+        font-size: 9px;
+    }
+
+    .hero-search-form button {
+        padding-inline: 8px;
+        font-size: 9px;
+    }
+
+    .drawer-content {
+        padding-inline: 16px;
+    }
+
+    .drawer-header {
+        padding-inline: 16px;
+    }
+
+}
+
+/* =========================================================
+   08. 3D PRELOADER - TABLET
+========================================================= */
+
+@media (max-width: 850px) {
+
+    .preloader-inner {
+        width: calc(100% - 40px);
+        min-height: 550px;
+    }
+
+    .preloader-stage {
+        width: 100%;
+        height: 470px;
+        scale: 0.85;
+    }
+
+    .ring-one {
+        width: 350px;
+        height: 350px;
+    }
+
+    .ring-two {
+        width: 450px;
+        height: 450px;
+    }
+
+    .ring-three {
+        width: 530px;
+        height: 530px;
+    }
+
+    .floating-document {
+        width: 120px;
+        min-height: 155px;
+    }
+
+    .government-service-icon {
+        width: 82px;
+        min-height: 75px;
+    }
+
+    .constitution-book {
+        scale: 0.85;
+    }
+
+}
+
+/* =========================================================
+   09. 3D PRELOADER - MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .civic-preloader {
+        align-items: center;
+    }
+
+    .preloader-inner {
+        width: calc(100% - 32px);
+        min-height: 500px;
+        height: 90dvh;
+        padding: 22px 0;
+    }
+
+    .preloader-brand {
+        gap: 9px;
+    }
+
+    .preloader-brand-icon {
+        width: 37px;
+        height: 37px;
+        font-size: 17px;
+    }
+
+    .preloader-brand-copy strong {
+        font-size: 13px;
+        letter-spacing: 1.5px;
+    }
+
+    .preloader-brand-copy small {
+        font-size: 6px;
+        letter-spacing: 1px;
+    }
+
+    .preloader-stage {
+        top: 47%;
+        width: 100%;
+        height: 380px;
+        scale: 0.66;
+    }
+
+    .ring-one {
+        width: 300px;
+        height: 300px;
+    }
+
+    .ring-two {
+        width: 390px;
+        height: 390px;
+    }
+
+    .ring-three {
+        width: 470px;
+        height: 470px;
+    }
+
+    .government-building {
+        scale: 0.85;
+    }
+
+    .floating-document {
+        width: 110px;
+        min-height: 140px;
+        padding: 10px;
+    }
+
+    .document-one {
+        left: 1%;
+        top: 12%;
+    }
+
+    .document-two {
+        right: 1%;
+        top: 12%;
+    }
+
+    .document-three {
+        left: 2%;
+        bottom: 0;
+    }
+
+    .document-top {
+        font-size: 7px;
+    }
+
+    .document-line {
+        margin-top: 9px;
+    }
+
+    .rupee-coin {
+        width: 52px;
+        height: 52px;
+    }
+
+    .coin-inner {
+        width: 40px;
+        height: 40px;
+    }
+
+    .coin-inner span {
+        font-size: 21px;
+    }
+
+    .coin-inner small {
+        font-size: 5px;
+    }
+
+    .coin-one {
+        left: 10%;
+    }
+
+    .coin-two {
+        right: 10%;
+    }
+
+    .coin-three {
+        width: 42px;
+        height: 42px;
+    }
+
+    .justice-statue {
+        scale: 0.85;
+    }
+
+    .constitution-book {
+        scale: 0.72;
+        right: 3%;
+        bottom: -5%;
+    }
+
+    .government-service-icon {
+        width: 75px;
+        min-height: 67px;
+        gap: 6px;
+    }
+
+    .government-service-icon i {
+        font-size: 19px;
+    }
+
+    .government-service-icon span {
+        font-size: 7px;
+    }
+
+    .service-pan {
+        left: 8%;
+    }
+
+    .service-voter {
+        right: 8%;
+    }
+
+    .service-certificate {
+        left: 8%;
+    }
+
+    .service-payment {
+        right: 8%;
+    }
+
+    .india-network {
+        scale: 0.8;
+    }
+
+    .preloader-center-text strong {
+        font-size: 34px;
+    }
+
+    .preloader-center-text span {
+        font-size: 9px;
+        letter-spacing: 3px;
+    }
+
+    .verify-circle {
+        width: 75px;
+        height: 75px;
+    }
+
+    .verify-circle i {
+        font-size: 32px;
+    }
+
+    .verification-check > span {
+        font-size: 10px;
+        letter-spacing: 3px;
+    }
+
+    .final-logo-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 27px;
+        margin-bottom: 15px;
+    }
+
+    .preloader-final-logo > strong {
+        font-size: 27px;
+        letter-spacing: 1px;
+    }
+
+    .preloader-final-logo > small {
+        font-size: 7px;
+        letter-spacing: 2px;
+    }
+
+    .loader-status {
+        width: 100%;
+    }
+
+    .loader-status-bottom {
+        font-size: 7px;
+        letter-spacing: 1px;
+    }
+
+    .preloader-bottom {
+        font-size: 7px;
+        letter-spacing: 2px;
+    }
+
+}
+
+/* =========================================================
+   10. 3D PRELOADER - SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .preloader-inner {
+        width: calc(100% - 26px);
+        min-height: 450px;
+    }
+
+    .preloader-stage {
+        top: 46%;
+        scale: 0.55;
+    }
+
+    .preloader-final-logo > strong {
+        font-size: 24px;
+    }
+
+    .preloader-brand-copy strong {
+        font-size: 12px;
+    }
+
+    .loader-status-bottom {
+        font-size: 6px;
+    }
+
+    .preloader-bottom {
+        font-size: 6px;
+        letter-spacing: 1.5px;
+    }
+
+}
+
+/* =========================================================
+   11. LANDSCAPE MOBILE
+========================================================= */
+
+@media (max-height: 520px) and (max-width: 900px) {
+
+    .preloader-inner {
+        height: 100dvh;
+        min-height: 0;
+        padding: 12px 0;
+    }
+
+    .preloader-stage {
+        top: 48%;
+        scale: 0.55;
+    }
+
+    .preloader-brand-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .preloader-brand-copy strong {
+        font-size: 11px;
+    }
+
+    .loader-status {
+        width: 350px;
+    }
+
+    .preloader-bottom {
+        margin-top: 10px;
+    }
+
+}
+
+/* =========================================================
+   12. TOUCH DEVICE HOVER FIX
+========================================================= */
+
+@media (hover: none) {
+
+    .service-card:hover,
+    .scheme-card:hover,
+    .step-card:hover,
+    .document-card:hover,
+    .benefit-card:hover,
+    .resource-card:hover {
+        transform: none;
+    }
+
+    .service-card:hover .service-image img,
+    .scheme-card:hover .scheme-image img {
+        transform: none;
+    }
+
+}
+
+/* =========================================================
+   13. OVERFLOW PROTECTION
+========================================================= */
+
+@media (max-width: 768px) {
+
+    html,
+    body {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .hero-section,
+    .digital-governance-section,
+    .citizen-support-section,
+    .final-cta-section,
+    .site-footer {
+        overflow: hidden;
+    }
+
+    .section-heading,
+    .hero-content,
+    .support-content,
+    .digital-governance-content {
+        min-width: 0;
+    }
+
+    .resource-card,
+    .department-card,
+    .online-service-item,
+    .announcement-item {
+        min-width: 0;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   CIVICCONNECT ABOUT - RESPONSIVE DESIGN
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .about-hero-content {
+        width: 90%;
+    }
+
+    .about-hero-copy {
+        max-width: 570px;
+    }
+
+    .about-hero-copy h1 {
+        font-size: 56px;
+    }
+
+    .parliament-scene {
+        right: -3%;
+        width: 49%;
+    }
+
+    .parliament-building {
+        max-width: 460px;
+    }
+
+    .about-intro-grid,
+    .about-experience-grid,
+    .about-commitment-grid {
+        gap: 42px;
+    }
+
+    .about-intro-images {
+        min-height: 420px;
+    }
+
+    .about-intro-main {
+        height: 390px;
+    }
+}
+
+@media (max-width: 900px) {
+
+    .about-hero {
+        min-height: 680px;
+    }
+
+    .about-hero-content {
+        padding: 105px 0 100px;
+    }
+
+    .about-hero-copy {
+        max-width: 520px;
+    }
+
+    .about-hero-copy h1 {
+        font-size: 48px;
+    }
+
+    .about-hero-description {
+        max-width: 480px;
+        font-size: 14px;
+    }
+
+    .parliament-scene {
+        width: 43%;
+        right: -4%;
+        opacity: .78;
+    }
+
+    .parliament-building {
+        max-width: 390px;
+    }
+
+    .about-trust-grid {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 24px;
+    }
+
+    .about-intro-grid,
+    .about-experience-grid,
+    .about-commitment-grid {
+        grid-template-columns: 1fr;
+        gap: 45px;
+    }
+
+    .about-intro-images {
+        width: min(600px, 100%);
+        margin: auto;
+    }
+
+    .about-experience-image {
+        width: min(650px, 100%);
+        margin: auto;
+    }
+
+    .about-commitment-image {
+        width: min(650px, 100%);
+        margin: auto;
+    }
+
+    .about-stat-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about-digital-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about-digital-card:last-child {
+        grid-column: 1 / -1;
+        width: calc(50% - 12px);
+        justify-self: center;
+    }
+
+    .about-values-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* HERO */
+
+    .about-hero {
+        min-height: 0;
+        display: block;
+        padding-bottom: 75px;
+    }
+
+    .about-hero-bg::after {
+        background:
+            linear-gradient(180deg, rgba(4, 19, 38, .89), rgba(4, 19, 38, .84)),
+            linear-gradient(0deg, rgba(4, 19, 38, .5), transparent);
+    }
+
+    .about-hero-content {
+        width: 90%;
+        padding: 95px 0 20px;
+        text-align: center;
+    }
+
+    .about-hero-copy {
+        max-width: 620px;
+        margin: auto;
+    }
+
+    .about-eyebrow {
+        font-size: 10px;
+        margin-bottom: 20px;
+    }
+
+    .about-hero-copy h1 {
+        font-size: clamp(36px, 7.2vw, 49px);
+        letter-spacing: -1.5px;
+        line-height: 1.17;
+        margin-bottom: 19px;
+    }
+
+    .about-hero-description {
+        max-width: 540px;
+        margin: 0 auto 25px;
+        font-size: 13px;
+        line-height: 1.85;
+    }
+
+    .about-hero-actions {
+        justify-content: center;
+    }
+
+    .about-hero-btn {
+        min-height: 49px;
+        padding: 0 17px;
+        font-size: 12px;
+    }
+
+    .about-hero-note {
+        justify-content: center;
+        font-size: 10px;
+        margin-top: 21px;
+    }
+
+    /* 3D PARLIAMENT */
+
+    .parliament-scene {
+        position: relative;
+        top: auto;
+        right: auto;
+        width: 100%;
+        height: auto;
+        min-height: 260px;
+        margin: -5px auto 0;
+        transform: none;
+        opacity: 1;
+    }
+
+    .parliament-building {
+        width: 75%;
+        max-width: 360px;
+        transform: rotateY(-8deg) rotateX(4deg);
+    }
+
+    .parliament-glow {
+        width: 230px;
+        height: 230px;
+        filter: blur(60px);
+    }
+
+    .about-hero-controls {
+        left: 50%;
+        bottom: 24px;
+        transform: translateX(-50%);
+        gap: 14px;
+    }
+
+    .about-slide-line {
+        width: 95px;
+    }
+
+    /* TRUST */
+
+    .about-trust-strip {
+        padding: 24px 0;
+    }
+
+    .about-trust-grid {
+        gap: 20px 14px;
+    }
+
+    .about-trust-item {
+        gap: 10px;
+    }
+
+    .about-trust-icon {
+        flex-basis: 43px;
+        width: 43px;
+        height: 43px;
+        font-size: 17px;
+    }
+
+    .about-trust-item strong {
+        font-size: 11px;
+    }
+
+    .about-trust-item small {
+        font-size: 10px;
+    }
+
+    /* GENERAL SECTIONS */
+
+    .about-intro,
+    .about-experience,
+    .about-digital,
+    .about-values,
+    .about-commitment,
+    .about-purpose {
+        padding: 72px 0;
+    }
+
+    .about-section-title {
+        font-size: 32px;
+    }
+
+    .about-centered-heading {
+        margin-bottom: 35px;
+    }
+
+    .about-centered-heading p {
+        font-size: 13px;
+    }
+
+    /* INTRO */
+
+    .about-intro-grid {
+        gap: 35px;
+    }
+
+    .about-intro-images {
+        min-height: 350px;
+        padding-right: 20px;
+        padding-bottom: 25px;
+    }
+
+    .about-intro-main {
+        height: 330px;
+    }
+
+    .about-intro-small {
+        height: 160px;
+        width: 42%;
+        border-width: 6px;
+    }
+
+    .about-intro-badge {
+        bottom: 48px;
+        padding: 12px 14px;
+    }
+
+    .about-intro-content h2,
+    .about-experience-content h2,
+    .about-commitment-content h2 {
+        font-size: 32px;
+    }
+
+    /* STATISTICS */
+
+    .about-statistics {
+        padding: 70px 0;
+    }
+
+    .about-stat-grid {
+        gap: 13px;
+    }
+
+    .about-stat {
+        min-height: 165px;
+        padding: 18px 10px;
+    }
+
+    .about-stat strong {
+        font-size: 30px;
+    }
+
+    /* PURPOSE */
+
+    .about-purpose-grid {
+        gap: 17px;
+    }
+
+    .about-purpose-card {
+        padding: 30px;
+    }
+
+    /* EXPERIENCE */
+
+    .about-experience-grid {
+        gap: 35px;
+    }
+
+    .about-experience-image,
+    .about-experience-image > img {
+        min-height: 320px;
+        height: 320px;
+    }
+
+    /* DIGITAL */
+
+    .about-digital-grid {
+        gap: 17px;
+    }
+
+    .about-digital-card > img {
+        height: 190px;
+    }
+
+    .about-digital-card-content {
+        padding: 20px;
+    }
+
+    .about-digital-card-content h3 {
+        font-size: 16px;
+    }
+
+    /* VALUES */
+
+    .about-values-grid {
+        gap: 15px;
+    }
+
+    .about-value-card {
+        min-height: 220px;
+        padding: 24px;
+    }
+
+    /* COMMITMENT */
+
+    .about-commitment-grid {
+        gap: 35px;
+    }
+
+    .about-commitment-image {
+        height: 340px;
+    }
+
+    /* CTA */
+
+    .about-cta {
+        padding: 65px 0;
+    }
+
+    .about-cta-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 25px;
+    }
+
+    .about-cta-content h2 {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 520px) {
+
+    .about-container {
+        width: 90%;
+    }
+
+    /* HERO */
+
+    .about-hero-content {
+        padding-top: 82px;
+    }
+
+    .about-hero-copy h1 {
+        font-size: 36px;
+        letter-spacing: -1.2px;
+    }
+
+    .about-hero-description {
+        font-size: 12px;
+        line-height: 1.85;
+    }
+
+    .about-hero-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .about-hero-btn {
+        width: 100%;
+    }
+
+    .parliament-scene {
+        min-height: 220px;
+    }
+
+    .parliament-building {
+        width: 83%;
+        max-width: 285px;
+    }
+
+    .about-hero-note {
+        font-size: 9px;
+    }
+
+    /* TRUST */
+
+    .about-trust-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 18px 10px;
+    }
+
+    .about-trust-item {
+        align-items: flex-start;
+    }
+
+    .about-trust-icon {
+        flex-basis: 36px;
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+    }
+
+    .about-trust-item strong {
+        font-size: 10px;
+        line-height: 1.5;
+    }
+
+    .about-trust-item small {
+        font-size: 9px;
+        line-height: 1.5;
+    }
+
+    /* SECTIONS */
+
+    .about-intro,
+    .about-experience,
+    .about-digital,
+    .about-values,
+    .about-commitment,
+    .about-purpose {
+        padding: 58px 0;
+    }
+
+    .about-section-title {
+        font-size: 28px;
+    }
+
+    .about-centered-heading p {
+        font-size: 12px;
+        line-height: 1.8;
+    }
+
+    /* INTRO */
+
+    .about-intro-images {
+        min-height: 280px;
+        padding-right: 13px;
+        padding-bottom: 18px;
+    }
+
+    .about-intro-main {
+        width: 88%;
+        height: 265px;
+    }
+
+    .about-intro-small {
+        width: 44%;
+        height: 125px;
+        border-width: 5px;
+    }
+
+    .about-intro-badge {
+        bottom: 35px;
+        padding: 10px 12px;
+    }
+
+    .about-intro-badge strong {
+        font-size: 11px;
+    }
+
+    .about-intro-badge span {
+        font-size: 9px;
+    }
+
+    .about-intro-content h2,
+    .about-experience-content h2,
+    .about-commitment-content h2 {
+        font-size: 28px;
+    }
+
+    .about-intro-content > p,
+    .about-experience-content > p,
+    .about-commitment-content > p {
+        font-size: 12px;
+    }
+
+    .about-check-list div {
+        font-size: 11px;
+        line-height: 1.6;
+    }
+
+    /* STATISTICS */
+
+    .about-statistics {
+        padding: 55px 0;
+    }
+
+    .about-stat-heading h2 {
+        font-size: 26px;
+    }
+
+    .about-stat-grid {
+        gap: 10px;
+    }
+
+    .about-stat {
+        min-height: 145px;
+        padding: 14px 8px;
+    }
+
+    .about-stat-icon {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .about-stat strong {
+        font-size: 27px;
+    }
+
+    .about-stat span {
+        font-size: 10px;
+        line-height: 1.5;
+    }
+
+    /* PURPOSE */
+
+    .about-purpose-card {
+        padding: 25px;
+    }
+
+    .about-purpose-card h3 {
+        font-size: 21px;
+    }
+
+    .about-purpose-card p {
+        font-size: 12px;
+    }
+
+    /* EXPERIENCE */
+
+    .about-experience-image,
+    .about-experience-image > img {
+        min-height: 270px;
+        height: 270px;
+    }
+
+    .about-image-caption {
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        padding: 12px;
+    }
+
+    .about-image-caption > i {
+        width: 36px;
+        height: 36px;
+        font-size: 13px;
+    }
+
+    .about-image-caption strong {
+        font-size: 11px;
+    }
+
+    .about-image-caption span {
+        font-size: 9px;
+    }
+
+    /* DIGITAL */
+
+    .about-digital-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-digital-card:last-child {
+        grid-column: auto;
+        width: 100%;
+    }
+
+    .about-digital-card > img {
+        height: 210px;
+    }
+
+    /* VALUES */
+
+    .about-values-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-value-card {
+        min-height: auto;
+        padding: 25px;
+    }
+
+    .about-value-card p {
+        font-size: 12px;
+    }
+
+    /* COMMITMENT */
+
+    .about-commitment-image {
+        height: 270px;
+    }
+
+    .about-commitment-list > div {
+        align-items: flex-start;
+        font-size: 11px;
+        line-height: 1.6;
+    }
+
+    /* CTA */
+
+    .about-cta {
+        padding: 55px 0;
+    }
+
+    .about-cta-content h2 {
+        font-size: 27px;
+    }
+
+    .about-cta-content p {
+        font-size: 12px;
+    }
+
+    .about-cta-btn {
+        width: 100%;
+        min-height: 50px;
+    }
+}
+
+@media (max-width: 360px) {
+
+    .about-hero-copy h1 {
+        font-size: 31px;
+    }
+
+    .about-trust-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-stat strong {
+        font-size: 24px;
+    }
+
+    .about-intro-content h2,
+    .about-experience-content h2,
+    .about-commitment-content h2 {
+        font-size: 25px;
+    }
+}
+
+
+
+/* =====================================
+   RESPONSIVE - TABLET
+===================================== */
+
+@media (max-width: 1100px) {
+
+    .service-hero {
+        padding-left: 4%;
+        padding-right: 4%;
+    }
+
+    .service-hero-layout {
+        grid-template-columns: minmax(190px, .8fr) minmax(340px, 1.2fr) minmax(190px, .8fr);
+        gap: 25px;
+    }
+
+    .door-stage {
+        height: 430px;
+    }
+
+    .hero-left h1 {
+        font-size: 39px;
+    }
+
+    .hero-right {
+        padding-left: 20px;
+    }
+
+    .intro-feature-grid,
+    .digital-services-grid,
+    .citizen-first-grid {
+        gap: 50px;
+    }
+
+    .faq-layout {
+        gap: 60px;
+    }
+
+    .footer-main {
+        gap: 30px;
+    }
+}
+
+@media (max-width: 900px) {
+
+    .service-hero {
+        min-height: auto;
+    }
+
+    .service-hero-layout {
+        grid-template-columns: 1fr 1fr;
+        padding: 55px 0 45px;
+        gap: 35px;
+    }
+
+    .hero-center {
+        grid-column: 1 / -1;
+        grid-row: 1;
+        width: min(520px, 85%);
+    }
+
+    .door-stage {
+        height: 470px;
+    }
+
+    .hero-left {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .hero-right {
+        grid-column: 2;
+        grid-row: 2;
+        min-height: 300px;
+    }
+
+    .hero-left h1 {
+        font-size: 43px;
+    }
+
+    .hero-right-content h2 {
+        font-size: 27px;
+    }
+
+    .services-card-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .process-line {
+        display: none;
+    }
+
+    .intro-feature-grid,
+    .digital-services-grid,
+    .citizen-first-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 35px;
+    }
+
+    .intro-feature-image,
+    .citizen-first-image {
+        height: 400px;
+    }
+
+    .digital-services-visual {
+        min-height: 420px;
+    }
+
+    .digital-image-main {
+        height: 360px;
+    }
+
+    .digital-image-small {
+        height: 190px;
+    }
+
+    .faq-layout {
+        grid-template-columns: 1fr 1.2fr;
+        gap: 35px;
+    }
+
+    .footer-main {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* =====================================
+   RESPONSIVE - MOBILE
+===================================== */
+
+@media (max-width: 650px) {
+
+    .content-container {
+        width: calc(100% - 38px);
+    }
+
+    .section-padding {
+        padding: 75px 0;
+    }
+
+    /* Header */
+
+    .services-header-inner {
+        width: calc(100% - 36px);
+        min-height: 70px;
+    }
+
+    .services-nav,
+    .header-contact {
+        display: none;
+    }
+
+    .services-menu-toggle {
+        display: block;
+    }
+
+    .services-mobile-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        padding: 0 20px;
+        max-height: 0;
+        overflow: hidden;
+        background: white;
+        border-bottom: 1px solid transparent;
+        transition: max-height .4s ease, padding .4s ease;
+    }
+
+    .services-mobile-menu.menu-open {
+        max-height: 360px;
+        padding: 12px 20px 22px;
+        border-bottom-color: var(--service-border);
+    }
+
+    .services-mobile-menu a {
+        padding: 14px 4px;
+        color: var(--service-text);
+        font-size: 13px;
+        font-weight: 700;
+        border-bottom: 1px solid var(--service-border);
+    }
+
+    .services-mobile-menu .mobile-menu-cta {
+        margin-top: 12px;
+        padding: 14px 18px;
+        color: white;
+        background: var(--service-primary);
+        text-align: center;
+        border: 0;
+    }
+
+    /* Hero */
+
+    .service-hero {
+        padding: 22px 19px;
+    }
+
+    .hero-top-line {
+        font-size: 7px;
+        letter-spacing: 1px;
+    }
+
+    .service-hero-layout {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 35px 0 30px;
+    }
+
+    .hero-center {
+        order: 1;
+        width: 100%;
+        max-width: 420px;
+        margin: 0 auto 35px;
+    }
+
+    .door-stage {
+        height: min(112vw, 420px);
+        max-height: 420px;
+    }
+
+    .door-frame {
+        inset: 0 4%;
+        border-width: 6px;
+    }
+
+    .door-panel-inner {
+        inset: 9px;
+        gap: 20px;
+    }
+
+    .door-emblem {
+        width: 54px;
+        height: 54px;
+        font-size: 20px;
+    }
+
+    .door-handle {
+        height: 48px;
+        width: 5px;
+    }
+
+    .image-corner-label {
+        left: 14px;
+        bottom: 14px;
+    }
+
+    .image-corner-label strong {
+        font-size: 23px;
+    }
+
+    .hero-carousel-controls {
+        margin-top: 27px;
+        gap: 18px;
+    }
+
+    .hero-left {
+        order: 2;
+        padding: 0 3px;
+    }
+
+    .hero-eyebrow {
+        margin-bottom: 16px;
+    }
+
+    .hero-left h1 {
+        font-size: clamp(34px, 9vw, 45px);
+        letter-spacing: -1.8px;
+        margin-bottom: 16px;
+    }
+
+    .hero-left > p {
+        max-width: 100%;
+        font-size: 12px;
+    }
+
+    .hero-left-bottom {
+        margin-top: 25px;
+        gap: 17px;
+    }
+
+    .hero-right {
+        order: 3;
+        min-height: auto;
+        margin-top: 38px;
+        padding: 22px 0 0;
+        border-left: 0;
+        border-top: 1px solid rgba(255,255,255,.2);
+    }
+
+    .hero-right-content {
+        margin-top: 25px;
+    }
+
+    .hero-right-content h2 {
+        font-size: 27px;
+    }
+
+    .hero-right-content p {
+        max-width: 100%;
+    }
+
+    .hero-right-footer {
+        margin-top: 28px;
+    }
+
+    .hero-bottom-meta {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        font-size: 7px;
+        letter-spacing: 1px;
+    }
+
+    .hero-bottom-meta span:last-child {
+        grid-column: 1 / -1;
+    }
+
+    /* Section headings */
+
+    .section-title {
+        font-size: clamp(30px, 8vw, 40px);
+        letter-spacing: -1.5px;
+    }
+
+    .section-heading-row {
+        display: block;
+        margin-bottom: 35px;
+    }
+
+    .section-heading-description {
+        margin-top: 20px;
+        font-size: 12px;
+    }
+
+    .center-section-heading {
+        margin-bottom: 38px;
+    }
+
+    .center-section-heading > p {
+        font-size: 12px;
+    }
+
+    /* Intro */
+
+    .intro-feature-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .intro-feature-image {
+        height: 310px;
+    }
+
+    .intro-feature-content h3 {
+        font-size: 27px;
+    }
+
+    .intro-feature-content > p {
+        font-size: 12px;
+    }
+
+    .intro-benefits {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    /* Services */
+
+    .services-card-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .service-card-image {
+        height: 235px;
+    }
+
+    .service-card-content {
+        padding: 23px 20px;
+    }
+
+    .service-card-content p {
+        min-height: auto;
+    }
+
+    /* Digital */
+
+    .digital-services-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .digital-services-content > p {
+        font-size: 12px;
+    }
+
+    .digital-services-visual {
+        min-height: 350px;
+    }
+
+    .digital-image-main {
+        width: 86%;
+        height: 290px;
+    }
+
+    .digital-image-small {
+        width: 48%;
+        height: 155px;
+    }
+
+    .digital-floating-card {
+        right: 0;
+        bottom: 12px;
+        padding: 13px;
+    }
+
+    /* Process */
+
+    .process-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 13px;
+    }
+
+    .process-card {
+        min-height: 230px;
+        padding: 22px 17px;
+    }
+
+    .process-icon {
+        width: 46px;
+        height: 46px;
+        margin: 20px 0 17px;
+    }
+
+    .process-card h3 {
+        font-size: 15px;
+    }
+
+    .process-card p {
+        font-size: 10px;
+    }
+
+    /* Citizen */
+
+    .citizen-first-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .citizen-first-image {
+        height: 330px;
+        margin-right: 12px;
+    }
+
+    .citizen-image-stamp {
+        width: 95px;
+        height: 95px;
+        right: -12px;
+        bottom: 20px;
+    }
+
+    /* FAQ */
+
+    .faq-layout {
+        grid-template-columns: 1fr;
+        gap: 38px;
+    }
+
+    .faq-item {
+        padding: 19px 0;
+    }
+
+    .faq-item summary {
+        font-size: 12px;
+    }
+
+    .faq-item > p {
+        font-size: 11px;
+    }
+
+    /* CTA */
+
+    .services-cta {
+        padding: 65px 0;
+    }
+
+    .services-cta-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .services-cta h2 {
+        font-size: 34px;
+    }
+
+    /* Footer */
+
+    .footer-main {
+        grid-template-columns: 1fr 1fr;
+        gap: 38px 20px;
+        padding-top: 55px;
+        padding-bottom: 45px;
+    }
+
+    .footer-brand {
+        grid-column: 1 / -1;
+    }
+
+    .footer-column h4 {
+        font-size: 9px;
+    }
+
+    .footer-column a,
+    .footer-column p {
+        font-size: 10px;
+    }
+
+    .footer-bottom {
+        min-height: 75px;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+        gap: 8px;
+        font-size: 8px;
+    }
+}
+
+/* SMALL MOBILE */
+
+@media (max-width: 380px) {
+
+    .content-container {
+        width: calc(100% - 30px);
+    }
+
+    .brand-copy strong {
+        font-size: 15px;
+    }
+
+    .brand-icon {
+        width: 38px;
+        height: 38px;
+    }
+
+    .door-stage {
+        height: 112vw;
+        max-height: 350px;
+    }
+
+    .hero-left h1 {
+        font-size: 33px;
+    }
+
+    .hero-bottom-meta {
+        font-size: 6px;
+    }
+
+    .process-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .process-card {
+        min-height: auto;
+    }
+
+    .intro-image-label {
+        left: 10px;
+        right: 10px;
+        padding: 13px;
+    }
+
+    .intro-image-label strong {
+        font-size: 8px;
+    }
+}
