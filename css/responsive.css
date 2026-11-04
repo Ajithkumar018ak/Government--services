@@ -3035,3 +3035,1599 @@
         font-size: 8px;
     }
 }
+
+
+
+
+
+/* =========================================================
+   CIVICCONNECT — CONTACT RESPONSIVE STYLES
+   File: css/contact-responsive.css
+========================================================= */
+
+/* =========================================================
+   LAPTOP
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    .contact-hero-grid {
+        gap: 45px;
+    }
+
+    .contact-hero-text h1 {
+        font-size: 55px;
+    }
+
+    .contact-info-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact-form-layout {
+        gap: 45px;
+    }
+
+    .office-location-layout {
+        gap: 40px;
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 992px) {
+
+    .section-padding {
+        padding: 80px 0;
+    }
+
+    .contact-hero {
+        padding-bottom: 80px;
+    }
+
+    .contact-breadcrumb {
+        margin-bottom: 45px;
+    }
+
+    .contact-hero-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+
+    .contact-hero-text h1 {
+        font-size: 46px;
+    }
+
+    .contact-hero-text > p {
+        font-size: 13px;
+    }
+
+    .contact-visual-frame {
+        height: 370px;
+    }
+
+    .contact-floating-card {
+        left: -20px;
+    }
+
+    .contact-form-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .contact-form-left {
+        max-width: 650px;
+        padding-top: 0;
+    }
+
+    .contact-form-card {
+        width: 100%;
+    }
+
+    .office-location-layout {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+
+    .map-placeholder {
+        min-height: 350px;
+    }
+
+    .department-card {
+        padding: 20px;
+        gap: 13px;
+    }
+
+    .emergency-content {
+        grid-template-columns: 60px 1fr;
+    }
+
+    .emergency-number {
+        grid-column: 2;
+        width: fit-content;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE LARGE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .section-padding {
+        padding: 65px 0;
+    }
+
+    .section-heading {
+        margin-bottom: 35px;
+    }
+
+    .section-heading h2,
+    .contact-form-left h2,
+    .office-location-content h2 {
+        font-size: 33px;
+        letter-spacing: -1px;
+    }
+
+    .section-heading > p {
+        font-size: 13px;
+    }
+
+    /* HERO */
+
+    .contact-hero {
+        padding: 30px 0 65px;
+    }
+
+    .contact-breadcrumb {
+        margin-bottom: 38px;
+    }
+
+    .contact-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 45px;
+    }
+
+    .contact-hero-text {
+        max-width: 100%;
+    }
+
+    .contact-hero-text h1 {
+        font-size: clamp(39px, 8vw, 54px);
+    }
+
+    .contact-hero-text > p {
+        max-width: 580px;
+        font-size: 13px;
+        line-height: 1.8;
+    }
+
+    .contact-hero-actions {
+        gap: 10px;
+    }
+
+    .contact-primary-btn,
+    .contact-secondary-btn {
+        min-height: 48px;
+        padding: 0 16px;
+        font-size: 11px;
+    }
+
+    .contact-trust {
+        margin-top: 30px;
+    }
+
+    .contact-hero-visual {
+        width: 100%;
+        max-width: 540px;
+        margin: 0 auto;
+        padding: 0 12px 15px;
+    }
+
+    .contact-visual-frame {
+        height: 370px;
+    }
+
+    .contact-floating-card {
+        left: -5px;
+        bottom: 55px;
+    }
+
+    .contact-visual-dot {
+        right: 0;
+    }
+
+    /* CONTACT CARDS */
+
+    .contact-info-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+
+    .contact-info-card {
+        padding: 22px 17px;
+    }
+
+    .info-card-icon {
+        width: 45px;
+        height: 45px;
+        margin-bottom: 18px;
+        font-size: 18px;
+    }
+
+    .contact-info-card h3 {
+        font-size: 16px;
+    }
+
+    .contact-info-card p {
+        min-height: 85px;
+        font-size: 11px;
+    }
+
+    .contact-info-card > a {
+        font-size: 10px;
+    }
+
+    /* FORM */
+
+    .contact-form-layout {
+        gap: 30px;
+    }
+
+    .contact-form-left > p {
+        font-size: 13px;
+    }
+
+    .contact-assistance-box {
+        margin-top: 28px;
+    }
+
+    .contact-form-card {
+        padding: 27px 22px;
+    }
+
+    .form-card-heading h3 {
+        font-size: 21px;
+    }
+
+    .form-row {
+        gap: 13px;
+    }
+
+    /* DEPARTMENT */
+
+    .department-grid {
+        grid-template-columns: 1fr;
+        gap: 13px;
+    }
+
+    .department-card {
+        padding: 20px;
+    }
+
+    /* LOCATION */
+
+    .office-location-layout {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .map-placeholder {
+        min-height: 330px;
+    }
+
+    /* EMERGENCY */
+
+    .emergency-section {
+        padding: 35px 0;
+    }
+
+    .emergency-content {
+        grid-template-columns: 55px 1fr;
+        gap: 17px;
+    }
+
+    .emergency-icon {
+        width: 52px;
+        height: 52px;
+        font-size: 20px;
+    }
+
+    .emergency-text h2 {
+        font-size: 19px;
+    }
+
+    .emergency-number {
+        grid-column: 1 / -1;
+        margin-left: 72px;
+    }
+
+    /* FAQ */
+
+    .contact-faq-question {
+        min-height: 62px;
+        padding: 15px;
+        font-size: 12px;
+    }
+
+    .contact-faq-answer p {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
+    .contact-faq-item.active .contact-faq-answer p {
+        padding: 0 15px 17px;
+    }
+
+    /* CTA */
+
+    .contact-cta-section {
+        padding: 55px 0;
+    }
+
+    .contact-cta-content {
+        padding: 55px 22px;
+    }
+
+    .contact-cta-content h2 {
+        font-size: 32px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE SMALL
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .section-padding {
+        padding: 55px 0;
+    }
+
+    .section-heading h2,
+    .contact-form-left h2,
+    .office-location-content h2 {
+        font-size: 29px;
+    }
+
+    .section-label {
+        font-size: 9px;
+        letter-spacing: 1.4px;
+    }
+
+    /* HERO */
+
+    .contact-hero {
+        padding-top: 24px;
+    }
+
+    .contact-breadcrumb {
+        margin-bottom: 30px;
+        font-size: 10px;
+    }
+
+    .contact-hero-text h1 {
+        font-size: 39px;
+        letter-spacing: -1.6px;
+    }
+
+    .contact-hero-text > p {
+        font-size: 12px;
+    }
+
+    .contact-eyebrow {
+        font-size: 9px;
+    }
+
+    .contact-hero-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .contact-primary-btn,
+    .contact-secondary-btn {
+        width: 100%;
+    }
+
+    .contact-visual-frame {
+        height: 290px;
+    }
+
+    .contact-floating-card {
+        left: -3px;
+        bottom: 38px;
+        padding: 11px 13px;
+    }
+
+    .floating-icon {
+        width: 34px;
+        height: 34px;
+        font-size: 14px;
+    }
+
+    .contact-floating-card strong {
+        font-size: 10px;
+    }
+
+    .contact-floating-card span {
+        font-size: 9px;
+    }
+
+    .contact-visual-dot {
+        width: 50px;
+        height: 50px;
+        border-width: 8px;
+    }
+
+    /* INFO CARDS */
+
+    .contact-info-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .contact-info-card {
+        padding: 22px;
+    }
+
+    .contact-info-card p {
+        min-height: auto;
+        margin-bottom: 15px;
+    }
+
+    /* FORM */
+
+    .contact-form-card {
+        padding: 23px 17px;
+        border-radius: 12px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .form-card-heading {
+        margin-bottom: 23px;
+    }
+
+    .form-card-heading h3 {
+        font-size: 19px;
+    }
+
+    .form-heading-icon {
+        width: 41px;
+        height: 41px;
+        font-size: 17px;
+    }
+
+    .form-group input,
+    .form-group select {
+        height: 47px;
+    }
+
+    .form-group label {
+        font-size: 11px;
+    }
+
+    .form-consent {
+        font-size: 10px;
+    }
+
+    /* DEPARTMENT */
+
+    .department-card {
+        grid-template-columns: 45px 1fr 30px;
+        gap: 11px;
+        padding: 16px 13px;
+    }
+
+    .department-icon {
+        width: 43px;
+        height: 43px;
+        font-size: 17px;
+    }
+
+    .department-card h3 {
+        font-size: 14px;
+    }
+
+    .department-card p {
+        font-size: 10px;
+    }
+
+    .department-card > a {
+        width: 30px;
+        height: 30px;
+        font-size: 10px;
+    }
+
+    /* LOCATION */
+
+    .map-placeholder {
+        min-height: 270px;
+    }
+
+    .office-direction-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* EMERGENCY */
+
+    .emergency-content {
+        grid-template-columns: 45px 1fr;
+        gap: 13px;
+    }
+
+    .emergency-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 17px;
+    }
+
+    .emergency-text > span {
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    .emergency-text h2 {
+        font-size: 16px;
+    }
+
+    .emergency-text p {
+        font-size: 10px;
+    }
+
+    .emergency-number {
+        width: 100%;
+        margin-left: 0;
+        text-align: center;
+    }
+
+    /* FAQ */
+
+    .contact-faq-question {
+        gap: 10px;
+        font-size: 11px;
+    }
+
+    /* CTA */
+
+    .contact-cta-section {
+        padding: 45px 0;
+    }
+
+    .contact-cta-content {
+        padding: 45px 17px;
+        border-radius: 13px;
+    }
+
+    .contact-cta-content h2 {
+        font-size: 27px;
+    }
+
+    .contact-cta-content > p {
+        font-size: 11px;
+    }
+
+}
+
+
+/* =========================================================
+   EXTRA SMALL DEVICES
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .contact-hero-text h1 {
+        font-size: 34px;
+    }
+
+    .contact-info-card {
+        padding: 18px;
+    }
+
+    .contact-form-card {
+        padding: 20px 14px;
+    }
+
+    .department-card {
+        grid-template-columns: 38px 1fr 25px;
+        gap: 9px;
+    }
+
+    .department-icon {
+        width: 37px;
+        height: 37px;
+        font-size: 15px;
+    }
+
+    .department-card h3 {
+        font-size: 12px;
+    }
+
+    .contact-cta-content h2 {
+        font-size: 24px;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .contact-hero *,
+    .contact-details *,
+    .contact-form-section *,
+    .department-section *,
+    .office-location-section *,
+    .emergency-section *,
+    .contact-faq-section *,
+    .contact-cta-section * {
+        animation: none !important;
+        transition: none !important;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   CIVICCONNECT – SCHEMES PAGE RESPONSIVE CSS
+   Tablet | Mobile | Small Mobile
+========================================================= */
+
+
+/* =========================================================
+   1. TABLET RESPONSIVE
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    /* COMMON */
+
+    .schemes-hero .container,
+    .featured-schemes .container,
+    .central-schemes .container,
+    .state-schemes .container,
+    .welfare-schemes .container,
+    .scheme-process .container,
+    .schemes-faq .container,
+    .schemes-cta .container {
+        width: 90%;
+    }
+
+
+    /* SCHEMES HERO */
+
+    .schemes-hero {
+        min-height: auto;
+        padding: 35px 0 30px;
+    }
+
+    .schemes-hero-layout {
+        grid-template-columns: 1fr 1fr;
+        gap: 35px;
+    }
+
+    .schemes-hero-left {
+        grid-column: 1 / -1;
+        max-width: 750px;
+    }
+
+    .schemes-hero-center {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .schemes-hero-right {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .schemes-carousel {
+        height: 480px;
+    }
+
+    .schemes-hero-left h1 {
+        font-size: clamp(40px, 5vw, 58px);
+    }
+
+    .hero-bottom-meta {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+
+    /* FEATURED SCHEMES */
+
+    .featured-schemes-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .featured-scheme-card:last-child {
+        grid-column: 1 / -1;
+        max-width: 100%;
+    }
+
+
+    /* CENTRAL SCHEMES */
+
+    .central-scheme-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+
+    /* STATE SCHEMES */
+
+    .state-schemes-layout {
+        grid-template-columns: 1fr 1fr;
+        gap: 35px;
+    }
+
+    .state-schemes-image {
+        min-height: 480px;
+    }
+
+
+    /* WELFARE */
+
+    .welfare-scheme-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .welfare-scheme-card:last-child {
+        grid-column: 1 / -1;
+    }
+
+
+    /* PROCESS */
+
+    .scheme-process-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+/* =========================================================
+   2. TABLET & MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    /* COMMON */
+
+    .schemes-hero .container,
+    .featured-schemes .container,
+    .central-schemes .container,
+    .state-schemes .container,
+    .welfare-schemes .container,
+    .scheme-process .container,
+    .schemes-faq .container,
+    .schemes-cta .container {
+        width: 90%;
+    }
+
+    .section-padding {
+        padding-top: 65px;
+        padding-bottom: 65px;
+    }
+
+    .section-heading-row {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .section-title {
+        font-size: clamp(28px, 5vw, 38px);
+        line-height: 1.2;
+    }
+
+    .section-heading-description {
+        font-size: 13px;
+        line-height: 1.8;
+    }
+
+
+    /* SCHEMES HERO */
+
+    .schemes-hero {
+        padding: 25px 0 30px;
+    }
+
+    .hero-top-line {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        flex-wrap: wrap;
+        font-size: 9px;
+    }
+
+    .schemes-hero-layout {
+        display: flex;
+        flex-direction: column;
+        gap: 35px;
+        margin-top: 45px;
+    }
+
+    .schemes-hero-left {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .schemes-hero-left h1 {
+        font-size: clamp(36px, 7vw, 52px);
+        line-height: 1.15;
+        letter-spacing: -1px;
+    }
+
+    .schemes-hero-left p {
+        font-size: 13px;
+        line-height: 1.8;
+    }
+
+    .hero-left-bottom {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+    }
+
+    .hero-caption {
+        font-size: 9px;
+        line-height: 1.6;
+    }
+
+
+    /* HERO CAROUSEL */
+
+    .schemes-hero-center {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .schemes-carousel {
+        width: 100%;
+        height: 440px;
+        border-radius: 12px;
+    }
+
+    .scheme-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .scheme-image-content {
+        left: 22px;
+        right: 22px;
+        bottom: 25px;
+    }
+
+    .scheme-image-content h2 {
+        font-size: clamp(23px, 5vw, 32px);
+        line-height: 1.2;
+    }
+
+    .scheme-image-content p {
+        font-size: 12px;
+        line-height: 1.7;
+    }
+
+    .scheme-carousel-controls {
+        gap: 12px;
+    }
+
+    .scheme-pagination {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .scheme-progress-track {
+        flex: 1;
+        min-width: 30px;
+    }
+
+
+    /* RIGHT CONTENT */
+
+    .schemes-hero-right {
+        width: 100%;
+        padding: 28px;
+    }
+
+    .hero-right-content h2 {
+        font-size: 28px;
+        line-height: 1.25;
+    }
+
+    .hero-right-content p {
+        font-size: 13px;
+        line-height: 1.8;
+    }
+
+    .hero-right-footer {
+        margin-top: 30px;
+    }
+
+
+    /* BOTTOM META */
+
+    .hero-bottom-meta {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+        padding-top: 25px;
+    }
+
+    .hero-bottom-meta span {
+        font-size: 9px;
+        line-height: 1.6;
+    }
+
+
+    /* FEATURED SCHEMES */
+
+    .featured-schemes-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+    }
+
+    .featured-scheme-card:last-child {
+        grid-column: auto;
+    }
+
+    .featured-scheme-image {
+        height: 220px;
+    }
+
+    .featured-scheme-content {
+        padding: 20px;
+    }
+
+    .featured-scheme-content h3 {
+        font-size: 18px;
+        line-height: 1.35;
+    }
+
+    .featured-scheme-content p {
+        font-size: 12px;
+        line-height: 1.7;
+    }
+
+
+    /* CENTRAL SCHEMES */
+
+    .central-scheme-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+    }
+
+    .central-scheme-card {
+        padding: 23px 18px;
+    }
+
+    .central-scheme-content h3 {
+        font-size: 17px;
+        line-height: 1.4;
+    }
+
+    .central-scheme-content p {
+        font-size: 12px;
+        line-height: 1.7;
+    }
+
+
+    /* STATE SCHEMES */
+
+    .state-schemes-layout {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .state-schemes-image {
+        width: 100%;
+        min-height: 420px;
+    }
+
+    .state-schemes-content {
+        width: 100%;
+    }
+
+    .state-schemes-content > p {
+        font-size: 13px;
+        line-height: 1.8;
+    }
+
+    .state-scheme-point {
+        gap: 15px;
+    }
+
+
+    /* WELFARE */
+
+    .welfare-scheme-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+    }
+
+    .welfare-scheme-card:last-child {
+        grid-column: auto;
+    }
+
+    .welfare-scheme-card {
+        padding: 25px 20px;
+    }
+
+    .welfare-scheme-card h3 {
+        font-size: 17px;
+        line-height: 1.4;
+    }
+
+    .welfare-scheme-card p {
+        font-size: 12px;
+        line-height: 1.7;
+    }
+
+
+    /* PROCESS */
+
+    .scheme-process-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+    }
+
+    .process-card {
+        padding: 25px 20px;
+    }
+
+    .process-card h3 {
+        font-size: 17px;
+    }
+
+    .process-card p {
+        font-size: 12px;
+        line-height: 1.7;
+    }
+
+
+    /* FAQ */
+
+    .faq-layout {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .faq-heading {
+        max-width: 600px;
+    }
+
+    .faq-question {
+        font-size: 13px;
+        gap: 15px;
+        padding: 19px 18px;
+        text-align: left;
+    }
+
+    .faq-answer p {
+        font-size: 12px;
+        line-height: 1.8;
+    }
+
+
+    /* CTA */
+
+    .schemes-cta-inner {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 25px;
+        padding: 40px 30px;
+    }
+
+    .cta-content h2 {
+        font-size: clamp(28px, 5vw, 38px);
+        line-height: 1.2;
+    }
+
+    .cta-content p {
+        font-size: 13px;
+        line-height: 1.8;
+    }
+
+}
+
+
+/* =========================================================
+   3. MOBILE RESPONSIVE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    /* COMMON */
+
+    .schemes-hero .container,
+    .featured-schemes .container,
+    .central-schemes .container,
+    .state-schemes .container,
+    .welfare-schemes .container,
+    .scheme-process .container,
+    .schemes-faq .container,
+    .schemes-cta .container {
+        width: 90%;
+    }
+
+    .section-padding {
+        padding: 55px 0;
+    }
+
+    .section-title {
+        font-size: 29px;
+        line-height: 1.25;
+        letter-spacing: -.6px;
+    }
+
+    .section-heading-description {
+        font-size: 12px;
+    }
+
+    .section-link {
+        font-size: 12px;
+    }
+
+
+    /* HERO */
+
+    .schemes-hero {
+        padding: 20px 0 25px;
+    }
+
+    .hero-top-line {
+        gap: 10px;
+        font-size: 8px;
+        letter-spacing: .5px;
+    }
+
+    .hero-top-line span:last-child {
+        text-align: right;
+    }
+
+    .schemes-hero-layout {
+        gap: 28px;
+        margin-top: 35px;
+    }
+
+    .hero-eyebrow {
+        font-size: 10px;
+        letter-spacing: 1px;
+    }
+
+    .schemes-hero-left h1 {
+        font-size: 37px;
+        line-height: 1.18;
+        letter-spacing: -1.2px;
+        margin: 16px 0;
+    }
+
+    .schemes-hero-left p {
+        font-size: 12px;
+        line-height: 1.85;
+    }
+
+    .hero-explore-btn {
+        min-height: 48px;
+        padding: 0 20px;
+        font-size: 12px;
+    }
+
+    .hero-caption {
+        font-size: 8px;
+        letter-spacing: .7px;
+    }
+
+
+    /* CAROUSEL */
+
+    .schemes-carousel {
+        height: 390px;
+        border-radius: 10px;
+    }
+
+    .scheme-image-content {
+        left: 18px;
+        right: 18px;
+        bottom: 22px;
+    }
+
+    .scheme-image-tag {
+        font-size: 9px;
+        padding: 7px 10px;
+    }
+
+    .scheme-image-content h2 {
+        font-size: 25px;
+        margin: 12px 0 8px;
+    }
+
+    .scheme-image-content p {
+        font-size: 11px;
+        line-height: 1.7;
+    }
+
+    .scheme-carousel-controls {
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    .scheme-arrow {
+        width: 40px;
+        height: 40px;
+        flex-shrink: 0;
+    }
+
+    .scheme-pagination {
+        gap: 9px;
+        font-size: 10px;
+    }
+
+    .scheme-progress-track {
+        height: 2px;
+    }
+
+
+    /* RIGHT CONTENT */
+
+    .schemes-hero-right {
+        padding: 23px 20px;
+    }
+
+    .hero-right-index {
+        font-size: 9px;
+    }
+
+    .hero-right-label {
+        font-size: 9px;
+        letter-spacing: 1px;
+    }
+
+    .hero-right-content h2 {
+        font-size: 25px;
+        margin: 14px 0;
+    }
+
+    .hero-right-content p {
+        font-size: 12px;
+        line-height: 1.8;
+    }
+
+    .scheme-benefit {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 11px;
+        line-height: 1.6;
+    }
+
+    .hero-text-link {
+        font-size: 11px;
+    }
+
+    .hero-right-footer {
+        font-size: 8px;
+        gap: 10px;
+    }
+
+
+    /* HERO BOTTOM */
+
+    .hero-bottom-meta {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding-top: 23px;
+    }
+
+    .hero-bottom-meta span {
+        font-size: 9px;
+    }
+
+
+    /* FEATURED */
+
+    .featured-schemes-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .featured-scheme-card:last-child {
+        grid-column: auto;
+    }
+
+    .featured-scheme-image {
+        height: 230px;
+    }
+
+    .featured-scheme-content {
+        padding: 22px;
+    }
+
+    .featured-scheme-content h3 {
+        font-size: 20px;
+    }
+
+
+    /* CENTRAL */
+
+    .central-scheme-grid {
+        grid-template-columns: 1fr;
+        gap: 17px;
+    }
+
+    .central-scheme-card {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 22px 18px;
+    }
+
+    .scheme-card-icon {
+        flex-shrink: 0;
+        width: 43px;
+        height: 43px;
+    }
+
+    .central-scheme-content {
+        min-width: 0;
+    }
+
+    .central-scheme-content h3 {
+        font-size: 17px;
+    }
+
+
+    /* STATE */
+
+    .state-schemes-image {
+        min-height: 330px;
+    }
+
+    .state-image-caption {
+        padding: 22px;
+    }
+
+    .state-image-caption h3 {
+        font-size: 32px;
+    }
+
+    .state-schemes-content .section-title {
+        font-size: 28px;
+    }
+
+    .state-scheme-point {
+        align-items: flex-start;
+        gap: 13px;
+    }
+
+    .point-icon {
+        width: 42px;
+        height: 42px;
+        min-width: 42px;
+    }
+
+    .state-scheme-point h4 {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .state-scheme-point p {
+        font-size: 11px;
+        line-height: 1.7;
+    }
+
+
+    /* WELFARE */
+
+    .welfare-scheme-grid {
+        grid-template-columns: 1fr;
+        gap: 17px;
+    }
+
+    .welfare-scheme-card:last-child {
+        grid-column: auto;
+    }
+
+    .welfare-scheme-card {
+        padding: 25px 22px;
+    }
+
+    .welfare-scheme-card h3 {
+        font-size: 19px;
+    }
+
+
+    /* PROCESS */
+
+    .scheme-process-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .process-card {
+        min-height: auto;
+        padding: 25px 22px;
+    }
+
+    .process-number {
+        font-size: 13px;
+    }
+
+    .process-icon {
+        width: 48px;
+        height: 48px;
+    }
+
+    .process-card h3 {
+        font-size: 18px;
+    }
+
+
+    /* FAQ */
+
+    .faq-layout {
+        gap: 30px;
+    }
+
+    .faq-question {
+        padding: 17px 14px;
+        font-size: 12px;
+        line-height: 1.6;
+    }
+
+    .faq-question i {
+        flex-shrink: 0;
+    }
+
+    .faq-answer {
+        padding: 0 14px;
+    }
+
+    .faq-answer p {
+        font-size: 11px;
+    }
+
+
+    /* CTA */
+
+    .schemes-cta-inner {
+        padding: 35px 22px;
+        gap: 23px;
+    }
+
+    .cta-content > span {
+        font-size: 9px;
+        letter-spacing: 1px;
+    }
+
+    .cta-content h2 {
+        font-size: 29px;
+        line-height: 1.25;
+        margin: 13px 0;
+    }
+
+    .cta-content p {
+        font-size: 12px;
+        line-height: 1.8;
+    }
+
+    .cta-white-button {
+        width: 100%;
+        min-height: 49px;
+        justify-content: center;
+        font-size: 12px;
+    }
+
+}
+
+
+/* =========================================================
+   4. EXTRA SMALL MOBILE
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .schemes-hero .container,
+    .featured-schemes .container,
+    .central-schemes .container,
+    .state-schemes .container,
+    .welfare-schemes .container,
+    .scheme-process .container,
+    .schemes-faq .container,
+    .schemes-cta .container {
+        width: 92%;
+    }
+
+    .schemes-hero-left h1 {
+        font-size: 32px;
+    }
+
+    .schemes-carousel {
+        height: 340px;
+    }
+
+    .scheme-image-content h2 {
+        font-size: 22px;
+    }
+
+    .schemes-hero-right {
+        padding: 20px 16px;
+    }
+
+    .hero-right-content h2 {
+        font-size: 22px;
+    }
+
+    .section-title {
+        font-size: 26px;
+    }
+
+    .footer-trust {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =========================================================
+   5. OVERFLOW & IMAGE SAFETY
+========================================================= */
+
+.schemes-hero,
+.featured-schemes,
+.central-schemes,
+.state-schemes,
+.welfare-schemes,
+.scheme-process,
+.schemes-faq,
+.schemes-cta {
+    max-width: 100%;
+    overflow-x: clip;
+}
+
+.schemes-hero img,
+.featured-schemes img,
+.central-schemes img,
+.state-schemes img {
+    max-width: 100%;
+}
+
+.schemes-hero *,
+.featured-schemes *,
+.central-schemes *,
+.state-schemes *,
+.welfare-schemes *,
+.scheme-process *,
+.schemes-faq *,
+.schemes-cta * {
+    box-sizing: border-box;
+}

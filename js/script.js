@@ -2226,3 +2226,654 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =====================================================
+   CIVICCONNECT - SCHEMES PAGE JAVASCRIPT
+===================================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    /* =====================================================
+       1. HERO CAROUSEL
+    ===================================================== */
+
+    const slides = document.querySelectorAll(".scheme-slide");
+    const dots = document.querySelectorAll(".scheme-dot");
+    const prevBtn = document.querySelector(".scheme-prev");
+    const nextBtn = document.querySelector(".scheme-next");
+
+    let currentSlide = 0;
+    let carouselTimer;
+
+    function showSlide(index) {
+        if (!slides.length) return;
+
+        currentSlide = (index + slides.length) % slides.length;
+
+        slides.forEach((slide, i) => {
+            slide.classList.toggle("active", i === currentSlide);
+            slide.setAttribute(
+                "aria-hidden",
+                i === currentSlide ? "false" : "true"
+            );
+        });
+
+        dots.forEach((dot, i) => {
+            dot.classList.toggle("active", i === currentSlide);
+            dot.setAttribute("aria-current",
+                i === currentSlide ? "true" : "false"
+            );
+        });
+    }
+
+    function nextSlide() {
+        showSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+        showSlide(currentSlide - 1);
+    }
+
+    function startCarousel() {
+        stopCarousel();
+        if (slides.length > 1) {
+            carouselTimer = setInterval(nextSlide, 5000);
+        }
+    }
+
+    function stopCarousel() {
+        clearInterval(carouselTimer);
+    }
+
+    if (slides.length) {
+        showSlide(0);
+        startCarousel();
+    }
+
+    nextBtn?.addEventListener("click", () => {
+        nextSlide();
+        startCarousel();
+    });
+
+    prevBtn?.addEventListener("click", () => {
+        prevSlide();
+        startCarousel();
+    });
+
+    dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => {
+            showSlide(index);
+            startCarousel();
+        });
+    });
+
+    const heroCarousel = document.querySelector(".scheme-hero-carousel");
+
+    heroCarousel?.addEventListener("mouseenter", stopCarousel);
+    heroCarousel?.addEventListener("mouseleave", startCarousel);
+
+
+    /* =====================================================
+       2. FAQ ACCORDION
+    ===================================================== */
+
+    const faqItems = document.querySelectorAll(".faq-item");
+
+    faqItems.forEach((item) => {
+        const question = item.querySelector(".faq-question");
+
+        question?.addEventListener("click", () => {
+            const isActive = item.classList.contains("active");
+
+            faqItems.forEach((faq) => {
+                faq.classList.remove("active");
+
+                const btn = faq.querySelector(".faq-question");
+                btn?.setAttribute("aria-expanded", "false");
+            });
+
+            if (!isActive) {
+                item.classList.add("active");
+                question.setAttribute("aria-expanded", "true");
+            }
+        });
+    });
+
+
+    /* =====================================================
+       3. SCROLL REVEAL ANIMATION
+    ===================================================== */
+
+    const revealElements = document.querySelectorAll(
+        ".scheme-card, .featured-card, .state-scheme-card, " +
+        ".welfare-card, .process-card, .section-heading"
+    );
+
+    if ("IntersectionObserver" in window) {
+        const revealObserver = new IntersectionObserver(
+            (entries, observer) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("revealed");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            {
+                threshold: 0.12,
+                rootMargin: "0px 0px -40px 0px"
+            }
+        );
+
+        revealElements.forEach((element) => {
+            element.classList.add("reveal");
+            revealObserver.observe(element);
+        });
+    } else {
+        revealElements.forEach((element) => {
+            element.classList.add("revealed");
+        });
+    }
+
+
+    /* =====================================================
+       4. MOBILE NAVIGATION
+    ===================================================== */
+
+    const menuToggle = document.querySelector("#menuToggle");
+    const mobileOverlay = document.querySelector("#mobileOverlay");
+    const mobileDrawer = document.querySelector("#mobileDrawer");
+    const drawerClose = document.querySelector("#drawerClose");
+
+    function openDrawer() {
+        mobileOverlay?.classList.add("active");
+        mobileDrawer?.classList.add("active");
+        menuToggle?.classList.add("active");
+
+        mobileOverlay?.setAttribute("aria-hidden", "false");
+        menuToggle?.setAttribute("aria-expanded", "true");
+
+        document.body.classList.add("drawer-open");
+    }
+
+    function closeDrawer() {
+        mobileOverlay?.classList.remove("active");
+        mobileDrawer?.classList.remove("active");
+        menuToggle?.classList.remove("active");
+
+        mobileOverlay?.setAttribute("aria-hidden", "true");
+        menuToggle?.setAttribute("aria-expanded", "false");
+
+        document.body.classList.remove("drawer-open");
+    }
+
+    menuToggle?.addEventListener("click", openDrawer);
+    drawerClose?.addEventListener("click", closeDrawer);
+    mobileOverlay?.addEventListener("click", closeDrawer);
+
+    mobileDrawer?.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", closeDrawer);
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+            closeDrawer();
+        }
+    });
+
+
+    /* =====================================================
+       5. BACK TO TOP
+    ===================================================== */
+
+    const backToTop = document.querySelector("#backToTop");
+
+    backToTop?.addEventListener("click", () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+
+
+    /* =====================================================
+       6. SCROLL PROGRESS
+    ===================================================== */
+
+    const scrollProgress = document.querySelector("#scrollProgress");
+
+    function updateScrollProgress() {
+        if (!scrollProgress) return;
+
+        const scrollableHeight =
+            document.documentElement.scrollHeight - window.innerHeight;
+
+        const progress = scrollableHeight > 0
+            ? (window.scrollY / scrollableHeight) * 100
+            : 0;
+
+        scrollProgress.style.width = `${progress}%`;
+    }
+
+    window.addEventListener("scroll", updateScrollProgress, {
+        passive: true
+    });
+
+    updateScrollProgress();
+
+
+    /* =====================================================
+       7. CURRENT YEAR
+    ===================================================== */
+
+    const yearElement = document.querySelector("#currentYear");
+
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+    }
+
+});
+
+
+
+
+
+
+
+
+
+
+
+/* =====================================================
+   CIVICCONNECT MOBILE DRAWER
+===================================================== */
+
+const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+const mobileOverlay = document.getElementById("mobileOverlay");
+const mobileDrawer = document.getElementById("mobileDrawer");
+const drawerClose = document.getElementById("drawerClose");
+const drawerLoginBtn = document.getElementById("drawerLoginBtn");
+
+function openMobileMenu() {
+    mobileOverlay?.classList.add("active");
+    mobileDrawer?.classList.add("active");
+    document.body.classList.add("drawer-open");
+
+    mobileMenuBtn?.setAttribute("aria-expanded", "true");
+}
+
+function closeMobileMenu() {
+    mobileOverlay?.classList.remove("active");
+    mobileDrawer?.classList.remove("active");
+    document.body.classList.remove("drawer-open");
+
+    mobileMenuBtn?.setAttribute("aria-expanded", "false");
+}
+
+mobileMenuBtn?.addEventListener("click", openMobileMenu);
+drawerClose?.addEventListener("click", closeMobileMenu);
+mobileOverlay?.addEventListener("click", closeMobileMenu);
+
+mobileDrawer?.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", closeMobileMenu);
+});
+
+document.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
+        closeMobileMenu();
+    }
+});
+
+drawerLoginBtn?.addEventListener("click", () => {
+    closeMobileMenu();
+    document.getElementById("loginModalOpen")?.click();
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =====================================================
+   CIVICCONNECT — LOGIN, SEARCH & NOTIFICATION SYSTEM
+===================================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    /* =====================================================
+       1. LOGIN MODAL ELEMENTS
+    ===================================================== */
+
+    const loginModal = document.getElementById("loginModal");
+    const loginModalOpen = document.getElementById("loginModalOpen");
+    const loginModalClose = document.getElementById("loginModalClose");
+    const loginModalOverlay = document.getElementById("loginModalOverlay");
+
+    const loginForm = document.getElementById("loginForm");
+    const loginEmail = document.getElementById("loginEmail");
+    const loginPassword = document.getElementById("loginPassword");
+    const loginMessage = document.getElementById("loginMessage");
+
+    const loginTabs = document.querySelectorAll("[data-login-tab]");
+    const passwordToggle = document.getElementById("passwordToggle");
+
+    let selectedRole = "citizen";
+
+
+    /* =====================================================
+       2. OPEN & CLOSE LOGIN MODAL
+    ===================================================== */
+
+    function openLoginModal() {
+        if (!loginModal) return;
+
+        loginModal.classList.add("active");
+        loginModal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("modal-open");
+
+        setTimeout(() => loginEmail?.focus(), 200);
+    }
+
+    function closeLoginModal() {
+        if (!loginModal) return;
+
+        loginModal.classList.remove("active");
+        loginModal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("modal-open");
+    }
+
+    loginModalOpen?.addEventListener("click", openLoginModal);
+    loginModalClose?.addEventListener("click", closeLoginModal);
+    loginModalOverlay?.addEventListener("click", closeLoginModal);
+
+
+    /* =====================================================
+       3. CITIZEN / ADMIN TAB SWITCHING
+    ===================================================== */
+
+    loginTabs.forEach(tab => {
+
+        tab.addEventListener("click", () => {
+
+            selectedRole = tab.dataset.loginTab;
+
+            loginTabs.forEach(item => {
+                item.classList.remove("active");
+            });
+
+            tab.classList.add("active");
+
+            if (loginMessage) {
+                loginMessage.textContent = "";
+            }
+
+            if (selectedRole === "admin") {
+                loginEmail.placeholder = "Enter admin email address";
+                loginPassword.placeholder = "Enter admin password";
+            } else {
+                loginEmail.placeholder = "Enter your email address";
+                loginPassword.placeholder = "Enter your password";
+            }
+
+        });
+
+    });
+
+
+    /* =====================================================
+       4. PASSWORD SHOW / HIDE
+    ===================================================== */
+
+    passwordToggle?.addEventListener("click", () => {
+
+        if (!loginPassword) return;
+
+        const isPassword = loginPassword.type === "password";
+
+        loginPassword.type = isPassword ? "text" : "password";
+
+        passwordToggle.innerHTML = isPassword
+            ? '<i class="fa-regular fa-eye-slash"></i>'
+            : '<i class="fa-regular fa-eye"></i>';
+
+        passwordToggle.setAttribute(
+            "aria-label",
+            isPassword ? "Hide password" : "Show password"
+        );
+
+    });
+
+
+    /* =====================================================
+       5. LOGIN FORM SUBMISSION
+    ===================================================== */
+
+    loginForm?.addEventListener("submit", event => {
+
+        event.preventDefault();
+
+        const email = loginEmail.value.trim();
+        const password = loginPassword.value.trim();
+
+        if (!email || !password) {
+            showLoginMessage("Please enter your email and password.", "error");
+            return;
+        }
+
+        if (!loginEmail.checkValidity()) {
+            showLoginMessage("Please enter a valid email address.", "error");
+            loginEmail.focus();
+            return;
+        }
+
+        if (selectedRole === "citizen") {
+
+            showLoginMessage("Citizen login successful. Redirecting...", "success");
+
+            setTimeout(() => {
+                window.location.href = "citizen-dashboard.html";
+            }, 700);
+
+        } else if (selectedRole === "admin") {
+
+            showLoginMessage("Admin login successful. Redirecting...", "success");
+
+            setTimeout(() => {
+                window.location.href = "admin-dashboard.html";
+            }, 700);
+
+        }
+
+    });
+
+
+    function showLoginMessage(message, type) {
+
+        if (!loginMessage) return;
+
+        loginMessage.textContent = message;
+        loginMessage.className = "login-message " + type;
+
+    }
+
+
+    /* =====================================================
+       6. LOGIN FROM MOBILE DRAWER
+    ===================================================== */
+
+    const drawerLoginBtn = document.getElementById("drawerLoginBtn");
+
+    drawerLoginBtn?.addEventListener("click", () => {
+
+        document.getElementById("mobileOverlay")?.classList.remove("active");
+        document.getElementById("mobileDrawer")?.classList.remove("active");
+
+        document.body.classList.remove("drawer-open");
+
+        openLoginModal();
+
+    });
+
+
+    /* =====================================================
+       7. SEARCH MODAL
+    ===================================================== */
+
+    const searchModal = document.getElementById("searchModal");
+    const headerSearchBtn = document.getElementById("headerSearchBtn");
+    const searchModalClose = document.getElementById("searchModalClose");
+    const searchModalOverlay = document.getElementById("searchModalOverlay");
+    const globalSearchForm = document.getElementById("globalSearchForm");
+    const globalSearchInput = document.getElementById("globalSearchInput");
+
+    function openSearchModal() {
+
+        searchModal?.classList.add("active");
+        searchModal?.setAttribute("aria-hidden", "false");
+
+        setTimeout(() => globalSearchInput?.focus(), 200);
+
+    }
+
+    function closeSearchModal() {
+
+        searchModal?.classList.remove("active");
+        searchModal?.setAttribute("aria-hidden", "true");
+
+    }
+
+    headerSearchBtn?.addEventListener("click", openSearchModal);
+    searchModalClose?.addEventListener("click", closeSearchModal);
+    searchModalOverlay?.addEventListener("click", closeSearchModal);
+
+
+    /* =====================================================
+       8. GLOBAL SEARCH
+    ===================================================== */
+
+    globalSearchForm?.addEventListener("submit", event => {
+
+        event.preventDefault();
+
+        const searchValue = globalSearchInput.value.trim().toLowerCase();
+
+        if (!searchValue) {
+            globalSearchInput.focus();
+            return;
+        }
+
+        const searchRoutes = [
+            {
+                keywords: ["aadhaar", "aadhar"],
+                url: "services.html#aadhaar"
+            },
+            {
+                keywords: ["pan", "pan card"],
+                url: "services.html#pan"
+            },
+            {
+                keywords: ["certificate", "birth certificate"],
+                url: "services.html#certificates"
+            },
+            {
+                keywords: ["scheme", "government scheme"],
+                url: "schemes.html"
+            },
+            {
+                keywords: ["contact", "support", "help"],
+                url: "contact.html"
+            },
+            {
+                keywords: ["about"],
+                url: "about.html"
+            }
+        ];
+
+        const matchedRoute = searchRoutes.find(route =>
+            route.keywords.some(keyword => searchValue.includes(keyword))
+        );
+
+        closeSearchModal();
+
+        if (matchedRoute) {
+            window.location.href = matchedRoute.url;
+        } else {
+            showToast(
+                "No Results Found",
+                "We couldn't find a matching service. Try another keyword."
+            );
+        }
+
+    });
+
+
+    /* =====================================================
+       9. TOAST NOTIFICATION
+    ===================================================== */
+
+    const toastNotification = document.getElementById("toastNotification");
+    const toastTitle = document.getElementById("toastTitle");
+    const toastMessage = document.getElementById("toastMessage");
+    const toastClose = document.getElementById("toastClose");
+
+    let toastTimer;
+
+    function showToast(title, message) {
+
+        if (!toastNotification) return;
+
+        if (toastTitle) toastTitle.textContent = title;
+        if (toastMessage) toastMessage.textContent = message;
+
+        toastNotification.classList.add("active");
+
+        clearTimeout(toastTimer);
+
+        toastTimer = setTimeout(() => {
+            toastNotification.classList.remove("active");
+        }, 4000);
+
+    }
+
+    toastClose?.addEventListener("click", () => {
+        toastNotification?.classList.remove("active");
+        clearTimeout(toastTimer);
+    });
+
+
+    /* =====================================================
+       10. ESCAPE KEY
+    ===================================================== */
+
+    document.addEventListener("keydown", event => {
+
+        if (event.key === "Escape") {
+            closeLoginModal();
+            closeSearchModal();
+        }
+
+    });
+
+});

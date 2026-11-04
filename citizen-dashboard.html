@@ -1,0 +1,1136 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CIVIC CONNECT | Citizen Dashboard</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+--primary:#0B4F9C;
+--dark:#07356B;
+--secondary:#2478D4;
+--light:#EAF3FF;
+--bg:#F4F7FB;
+--white:#fff;
+--text:#1D2939;
+--muted:#667085;
+--border:#DCE5F0;
+--success:#16834A;
+--warning:#D98B12;
+--danger:#D64545;
+--sidebar:265px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button,input,select,textarea{font-family:inherit}
+img{max-width:100%;display:block}
+
+.sidebar{
+position:fixed;top:0;left:0;width:var(--sidebar);height:100vh;
+background:#fff;border-right:1px solid var(--border);
+z-index:1050;display:flex;flex-direction:column;
+transition:.3s ease;
+}
+.brand{
+height:85px;display:flex;align-items:center;gap:12px;
+padding:0 23px;border-bottom:1px solid var(--border);
+}
+.brand-icon{
+width:43px;height:43px;background:var(--primary);color:white;
+display:grid;place-items:center;border-radius:11px;font-size:21px;
+}
+.brand-name{font-family:Manrope;font-size:19px;font-weight:800;color:var(--dark)}
+.brand-name small{display:block;font-size:9px;letter-spacing:1.4px;color:var(--muted)}
+.nav-label{padding:28px 24px 13px;font-size:10px;font-weight:800;color:#98A2B3;letter-spacing:1.5px}
+.side-nav{padding:0 13px;display:flex;flex-direction:column;gap:7px}
+.side-link{
+display:flex;align-items:center;gap:14px;padding:13px 15px;
+border-radius:9px;color:#667085;font-size:13px;font-weight:700;transition:.2s;
+}
+.side-link i{width:22px;font-size:17px;text-align:center}
+.side-link:hover,.side-link.active{background:var(--light);color:var(--primary)}
+.side-link.active{border-left:3px solid var(--primary);padding-left:12px}
+
+.sidebar-bottom{margin-top:auto;padding:17px;border-top:1px solid var(--border)}
+.sidebar-user{display:flex;align-items:center;gap:10px;margin-bottom:17px}
+.avatar{width:40px;height:40px;object-fit:cover;border-radius:50%}
+.sidebar-user strong{display:block;font-size:12px}
+.sidebar-user small{font-size:10px;color:var(--muted)}
+.logout-btn{
+width:100%;padding:12px;border:1px solid #f1dada;
+background:#fff5f5;color:#D64545;border-radius:8px;
+font-size:12px;font-weight:800;display:flex;align-items:center;
+justify-content:center;gap:10px;transition:.2s;
+}
+.logout-btn:hover{background:#D64545;color:white}
+
+.main{margin-left:var(--sidebar);min-height:100vh}
+.top-info{
+height:35px;background:var(--dark);color:white;
+display:flex;align-items:center;justify-content:space-between;
+padding:0 30px;font-size:10px;
+}
+.top-info-right{display:flex;gap:20px}
+.top-info a{color:#dceaff}
+
+.header{
+height:76px;background:white;border-bottom:1px solid var(--border);
+display:flex;align-items:center;justify-content:space-between;
+padding:0 30px;position:sticky;top:0;z-index:900;
+}
+.header-left{display:flex;align-items:center;gap:15px}
+.header-title{font-size:15px;font-weight:800}
+.header-subtitle{font-size:10px;color:var(--muted);margin-top:3px}
+.header-actions{display:flex;align-items:center;gap:16px}
+.header-icon{
+width:38px;height:38px;border:1px solid var(--border);
+border-radius:9px;display:grid;place-items:center;
+background:white;color:#475467;position:relative;
+}
+.notification-dot{position:absolute;width:7px;height:7px;background:red;border-radius:50%;right:7px;top:7px}
+.header-profile{display:flex;align-items:center;gap:9px;cursor:pointer}
+.header-profile img{width:38px;height:38px;object-fit:cover;border-radius:50%}
+.header-profile strong{display:block;font-size:11px}
+.header-profile small{font-size:10px;color:var(--muted)}
+.hamburger{display:none;border:0;background:none;font-size:22px;color:var(--primary)}
+
+.content{padding:28px 30px 45px;max-width:1600px;margin:auto}
+.page{display:none;animation:fade .3s ease}
+.page.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.page-heading{margin-bottom:23px}
+.page-heading h2{font-size:23px;font-weight:800}
+.page-heading p{font-size:12px;color:var(--muted);margin-top:6px}
+
+.hero{
+min-height:260px;border-radius:14px;overflow:hidden;
+background:linear-gradient(100deg,rgba(7,53,107,.98),rgba(11,79,156,.83),rgba(11,79,156,.48)),
+url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1400') center/cover;
+padding:32px;color:white;display:flex;align-items:center;
+justify-content:space-between;gap:20px;
+}
+.hero-content{max-width:570px}
+.hero-tag{font-size:10px;font-weight:800;letter-spacing:1.7px;color:#c5e0ff;margin-bottom:14px}
+.hero h1{font-family:Manrope;font-size:30px;font-weight:800}
+.hero p{font-size:12px;color:#e1edff;line-height:1.9;margin:10px 0}
+.hero-image{width:235px;height:180px;object-fit:cover;border-radius:12px;border:4px solid #ffffff35}
+.hero-search{display:flex;background:white;padding:5px;border-radius:8px;margin-top:18px;max-width:480px}
+.hero-search input{border:0;outline:0;flex:1;min-width:0;padding:10px;font-size:11px}
+.hero-search button{border:0;background:var(--primary);color:white;padding:0 15px;border-radius:6px;font-size:11px;font-weight:800}
+.hero-actions{display:flex;gap:9px;margin-top:12px;flex-wrap:wrap}
+
+.btn-white,.btn-outline-white{
+padding:10px 14px;border-radius:7px;font-size:10px;font-weight:800;
+}
+.btn-white{background:white;color:var(--primary);border:0}
+.btn-outline-white{background:transparent;color:white;border:1px solid #ffffff80}
+
+.section-title{display:flex;justify-content:space-between;align-items:center;margin:28px 0 15px}
+.section-title h3{font-size:15px;font-weight:800;margin:0}
+.section-title a{font-size:11px;font-weight:700;color:var(--primary)}
+
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.stat-card{
+background:white;border:1px solid var(--border);border-radius:11px;
+padding:18px;display:flex;align-items:center;justify-content:space-between;
+box-shadow:0 2px 8px #183b6509;
+}
+.stat-card p{font-size:10px;color:var(--muted);margin:0 0 7px}
+.stat-card h3{font-size:25px;font-weight:800;margin:0}
+.stat-icon{width:42px;height:42px;border-radius:10px;display:grid;place-items:center;font-size:18px}
+.blue{background:#EAF3FF;color:#0B4F9C}
+.green{background:#E6F6ED;color:#16834A}
+.orange{background:#FFF3DF;color:#D98B12}
+.red{background:#FDECEC;color:#D64545}
+
+.profile-summary{background:white;border:1px solid var(--border);padding:17px;border-radius:11px;display:flex;align-items:center;gap:13px;height:100%}
+.profile-summary img{width:58px;height:58px;border-radius:50%;object-fit:cover}
+.profile-summary h4{font-size:14px;font-weight:800;margin:0 0 5px}
+.profile-summary p{font-size:10px;color:var(--muted);margin:3px 0}
+.verified{font-size:10px;color:var(--success);font-weight:800}
+
+.service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.service-card{background:white;border:1px solid var(--border);border-radius:11px;overflow:hidden;transition:.25s}
+.service-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px #123c6815}
+.service-card>img{width:100%;height:120px;object-fit:cover}
+.service-body{padding:14px}
+.service-icon{width:34px;height:34px;background:var(--light);color:var(--primary);display:grid;place-items:center;border-radius:8px;margin-bottom:10px}
+.service-body h4{font-size:12px;font-weight:800}
+.service-body p{font-size:10px;color:var(--muted);line-height:1.7;min-height:35px}
+.service-meta{font-size:9px;color:var(--muted);margin:9px 0}
+.btn-primary-custom,.btn-light-custom{
+padding:9px 12px;border-radius:7px;font-size:10px;font-weight:800;
+}
+.btn-primary-custom{background:var(--primary);border:1px solid var(--primary);color:white}
+.btn-primary-custom:hover{background:var(--dark);color:white}
+.btn-light-custom{background:var(--light);border:1px solid #d6e8ff;color:var(--primary)}
+
+.card-box{background:white;border:1px solid var(--border);border-radius:11px;padding:19px;height:100%}
+.table-wrap{background:white;border:1px solid var(--border);border-radius:11px;overflow-x:auto}
+.table{margin:0;white-space:nowrap}
+.table th{background:#F8FAFC;color:#667085;font-size:10px;font-weight:800;padding:14px;border-bottom:1px solid var(--border)}
+.table td{font-size:10px;color:#475467;padding:14px;vertical-align:middle;border-color:#edf1f5}
+.table td strong{color:var(--text)}
+.status{padding:5px 9px;border-radius:30px;font-size:9px;font-weight:800;display:inline-block}
+.approved,.resolved{background:#E6F6ED;color:#16834A}
+.pending,.awaiting{background:#FFF3DF;color:#B7791F}
+.review,.processing,.progress{background:#EAF3FF;color:#0B4F9C}
+.rejected{background:#FDECEC;color:#D64545}
+
+.announcement{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid #edf1f5}
+.announcement:last-child{border:0}
+.announcement-icon{width:34px;height:34px;background:var(--light);color:var(--primary);display:grid;place-items:center;border-radius:9px;flex-shrink:0}
+.announcement strong{font-size:11px;display:block}
+.announcement p{font-size:10px;color:var(--muted);margin:4px 0}
+.announcement small{font-size:9px;color:#98A2B3}
+
+.scheme-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.scheme-card{border:1px solid var(--border);border-radius:9px;overflow:hidden}
+.scheme-card img{width:100%;height:105px;object-fit:cover}
+.scheme-card div{padding:12px}
+.scheme-card h4{font-size:11px;font-weight:800}
+.scheme-card p{font-size:9px;color:var(--muted);line-height:1.6}
+
+.support-banner{background:linear-gradient(110deg,#07356B,#0B4F9C);border-radius:12px;padding:25px;color:white;display:flex;align-items:center;justify-content:space-between;gap:15px;margin-top:25px}
+.support-banner h3{font-size:17px;font-weight:800}
+.support-banner p{font-size:10px;color:#dceaff}
+.support-buttons{display:flex;gap:8px;flex-wrap:wrap}
+.support-buttons a{font-size:10px;padding:10px 13px;border-radius:7px;border:1px solid #ffffff70;color:white;font-weight:700}
+.support-buttons a:first-child{background:white;color:var(--primary)}
+
+.filter-bar{background:white;border:1px solid var(--border);border-radius:10px;padding:14px;display:flex;gap:10px;flex-wrap:wrap;margin-bottom:17px}
+.form-control,.form-select{font-size:11px;padding:11px;border-color:var(--border);border-radius:7px}
+.form-control:focus,.form-select:focus{border-color:var(--secondary);box-shadow:0 0 0 3px #2478d41a}
+.form-label{font-size:11px;font-weight:700;color:#475467}
+.form-group{margin-bottom:16px}
+
+.category-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+.category-card{background:white;border:1px solid var(--border);border-radius:9px;padding:15px;display:flex;align-items:center;gap:12px;cursor:pointer;text-align:left}
+.category-card:hover,.category-card.selected{background:var(--light);border-color:var(--secondary)}
+.category-card i{font-size:20px;color:var(--primary)}
+.category-card strong{font-size:11px;display:block}
+.category-card small{font-size:9px;color:var(--muted)}
+
+.profile-hero{background:linear-gradient(110deg,#07356B,#2478D4);border-radius:12px;padding:23px;color:white;display:flex;align-items:center;gap:17px;margin-bottom:20px}
+.profile-hero img{width:75px;height:75px;border-radius:50%;object-fit:cover;border:3px solid white}
+.profile-hero h3{font-size:19px;font-weight:800}
+.profile-hero p{font-size:10px;color:#dceaff;margin:3px}
+.profile-hero .btn-white{margin-left:auto}
+.document-card{border:1px solid var(--border);border-radius:9px;padding:16px;background:white}
+.document-card i{font-size:23px;color:var(--primary);margin-bottom:12px}
+.document-card strong{display:block;font-size:11px}
+.document-card small{font-size:9px;color:var(--muted)}
+
+.setting-row{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--border)}
+.setting-row:last-child{border:0}
+.setting-row strong{font-size:11px;display:block}
+.setting-row small{font-size:10px;color:var(--muted)}
+
+.timeline{position:relative;padding-left:27px;margin:18px 0}
+.timeline:before{content:'';position:absolute;left:8px;top:5px;bottom:10px;width:2px;background:#dce5f0}
+.timeline-item{position:relative;padding-bottom:22px}
+.timeline-item:before{content:'';position:absolute;left:-25px;top:2px;width:12px;height:12px;border-radius:50%;background:#dce5f0;border:2px solid white}
+.timeline-item.done:before{background:var(--success)}
+.timeline-item strong{font-size:11px}
+.timeline-item p{font-size:10px;color:var(--muted);margin-top:4px}
+
+.modal-content{border:0;border-radius:12px}
+.modal-header{background:var(--light);border-bottom:1px solid var(--border)}
+.modal-title{font-size:15px;font-weight:800}
+.modal-body{padding:22px}
+.mobile-overlay{display:none;position:fixed;inset:0;background:#071b33a8;z-index:1040}
+.toast-msg{position:fixed;right:20px;bottom:20px;background:white;border-left:4px solid var(--success);padding:15px 19px;border-radius:8px;box-shadow:0 7px 25px #123c6820;z-index:2000;font-size:12px;display:none}
+
+@media(max-width:1100px){
+.service-grid{grid-template-columns:repeat(3,1fr)}
+.grid-4{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+.sidebar{transform:translateX(-100%)}
+.sidebar.open{transform:translateX(0)}
+.mobile-overlay.show{display:block}
+.main{margin-left:0}
+.hamburger{display:block}
+.header{padding:0 15px}
+.content{padding:20px 15px}
+.top-info{padding:0 15px}
+.hero{padding:23px}
+.hero-image{display:none}
+.hero h1{font-size:25px}
+.category-grid{grid-template-columns:repeat(2,1fr)}
+.service-grid{grid-template-columns:repeat(2,1fr)}
+.support-banner{flex-direction:column;align-items:flex-start}
+.header-profile .profile-details{display:none}
+}
+@media(max-width:480px){
+.service-grid{gap:9px}
+.service-card>img{height:90px}
+.service-body{padding:10px}
+.grid-4{gap:9px}
+.stat-card{padding:12px}
+.stat-card h3{font-size:21px}
+.stat-icon{width:34px;height:34px}
+.hero h1{font-size:22px}
+.hero{padding:19px}
+.category-card{padding:10px;gap:8px}
+.category-card strong{font-size:10px}
+.profile-hero{flex-wrap:wrap}
+.profile-hero .btn-white{margin-left:0}
+}
+</style>
+</head>
+
+<body>
+
+<div class="mobile-overlay" id="mobileOverlay"></div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+
+    <a href="#dashboard" class="brand" data-page="dashboard">
+        <span class="brand-icon"><i class="fa-solid fa-landmark"></i></span>
+        <span class="brand-name">CIVIC CONNECT<small>CITIZEN SERVICE PORTAL</small></span>
+    </a>
+
+    <div class="nav-label">MAIN MENU</div>
+
+    <nav class="side-nav">
+        <a href="#dashboard" class="side-link active" data-page="dashboard">
+            <i class="fa-solid fa-house"></i>Dashboard
+        </a>
+
+        <a href="#services" class="side-link" data-page="services">
+            <i class="fa-solid fa-building-columns"></i>Government Services
+        </a>
+
+        <a href="#applications" class="side-link" data-page="applications">
+            <i class="fa-solid fa-file-lines"></i>My Applications
+        </a>
+
+        <a href="#grievances" class="side-link" data-page="grievances">
+            <i class="fa-solid fa-headset"></i>Grievances & Support
+        </a>
+
+        <a href="#profile" class="side-link" data-page="profile">
+            <i class="fa-solid fa-user"></i>My Profile
+        </a>
+    </nav>
+
+    <!-- SIDEBAR BOTTOM -->
+    <div class="sidebar-bottom">
+
+        <div class="sidebar-user">
+            <img class="avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100" alt="Citizen avatar">
+            <div>
+                <strong>Ajith Kumar</strong>
+                <small><i class="fa-solid fa-circle-check text-success"></i> Verified Citizen</small>
+            </div>
+        </div>
+
+        <a href="404.html" class="logout-btn">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Logout
+        </a>
+
+    </div>
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+
+<div class="top-info">
+    <span><i class="fa-solid fa-landmark me-2"></i>Government Citizen Service Portal</span>
+    <div class="top-info-right">
+        <a href="404.html">Helpdesk</a>
+        <a href="404.html">Accessibility</a>
+        <a href="404.html">English <i class="fa-solid fa-chevron-down"></i></a>
+    </div>
+</div>
+
+<header class="header">
+
+    <div class="header-left">
+        <button class="hamburger" id="hamburger">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <div>
+            <div class="header-title" id="headerTitle">Citizen Dashboard</div>
+            <div class="header-subtitle">Your Government Services, One Digital Platform.</div>
+        </div>
+    </div>
+
+    <div class="header-actions">
+
+        <div class="dropdown">
+            <button class="header-icon" data-bs-toggle="dropdown">
+                <i class="fa-regular fa-bell"></i>
+                <span class="notification-dot"></span>
+            </button>
+
+            <div class="dropdown-menu dropdown-menu-end p-3" style="width:250px">
+                <strong>Notifications</strong>
+                <hr>
+                <a href="404.html" class="dropdown-item">Application status updated</a>
+                <a href="404.html" class="dropdown-item">New service guidelines</a>
+                <a href="404.html" class="dropdown-item">Appointment reminder</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <div class="header-profile" data-bs-toggle="dropdown">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100" alt="Citizen profile">
+                <div class="profile-details">
+                    <strong>Ajith Kumar</strong>
+                    <small>Citizen Account</small>
+                </div>
+                <i class="fa-solid fa-chevron-down small"></i>
+            </div>
+
+            <div class="dropdown-menu dropdown-menu-end">
+                <a href="#profile" class="dropdown-item" data-page="profile">My Profile</a>
+                <a href="404.html" class="dropdown-item">Account Settings</a>
+                <a href="404.html" class="dropdown-item text-danger">Logout</a>
+            </div>
+        </div>
+
+    </div>
+</header>
+
+<div class="content">
+
+<!-- ================= DASHBOARD ================= -->
+
+<section class="page active" id="dashboard">
+
+    <div class="hero">
+
+        <div class="hero-content">
+            <div class="hero-tag">YOUR DIGITAL CITIZEN SERVICE PORTAL</div>
+
+            <h1>Welcome to Civic Connect</h1>
+
+            <p>Access essential government services, submit applications, track your requests, and stay updated through one convenient citizen portal.</p>
+
+            <div class="hero-search">
+                <input type="search" id="dashboardSearch" placeholder="Search government services...">
+                <button id="dashboardSearchBtn"><i class="fa-solid fa-search"></i> Search</button>
+            </div>
+
+            <div class="hero-actions">
+                <button class="btn-white" data-page="services">Explore Services <i class="fa-solid fa-arrow-right"></i></button>
+                <button class="btn-outline-white" data-page="applications">Track Application</button>
+            </div>
+        </div>
+
+        <img class="hero-image" src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600" alt="Government building">
+    </div>
+
+    <div class="section-title"><h3>Citizen Overview</h3></div>
+
+    <div class="row g-3">
+
+        <div class="col-lg-8">
+            <div class="grid-4">
+
+                <div class="stat-card">
+                    <div><p>Total Applications</p><h3>08</h3></div>
+                    <span class="stat-icon blue"><i class="fa-solid fa-file-lines"></i></span>
+                </div>
+
+                <div class="stat-card">
+                    <div><p>Approved</p><h3>04</h3></div>
+                    <span class="stat-icon green"><i class="fa-solid fa-circle-check"></i></span>
+                </div>
+
+                <div class="stat-card">
+                    <div><p>Pending</p><h3>03</h3></div>
+                    <span class="stat-icon orange"><i class="fa-solid fa-clock"></i></span>
+                </div>
+
+                <div class="stat-card">
+                    <div><p>Open Grievances</p><h3>01</h3></div>
+                    <span class="stat-icon red"><i class="fa-solid fa-headset"></i></span>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="profile-summary">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150" alt="Ajith Kumar">
+                <div>
+                    <h4>Ajith Kumar <i class="fa-solid fa-circle-check verified"></i></h4>
+                    <p>Citizen ID: CC202600184</p>
+                    <p>Bengaluru, India</p>
+                    <span class="verified">Verified Account</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="section-title">
+        <h3>Quick Government Services</h3>
+        <a href="#services" data-page="services">View All Services <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+
+    <div class="service-grid" id="quickServices"></div>
+
+    <div class="section-title">
+        <h3>My Recent Applications</h3>
+        <a href="#applications" data-page="applications">View All</a>
+    </div>
+
+    <div class="table-wrap">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>APPLICATION ID</th>
+                    <th>SERVICE NAME</th>
+                    <th>SUBMISSION DATE</th>
+                    <th>STATUS</th>
+                    <th>ACTION</th>
+                </tr>
+            </thead>
+            <tbody id="recentApplications"></tbody>
+        </table>
+    </div>
+
+    <div class="row g-3 mt-2">
+
+        <div class="col-lg-6">
+            <div class="card-box">
+                <div class="section-title mt-0"><h3>Important Announcements</h3></div>
+
+                <div class="announcement">
+                    <span class="announcement-icon"><i class="fa-solid fa-file-circle-check"></i></span>
+                    <div><strong>New Citizen Service Application Guidelines</strong><p>Review the sample application guidelines.</p><small>04 November 2026</small></div>
+                </div>
+
+                <div class="announcement">
+                    <span class="announcement-icon"><i class="fa-solid fa-folder-open"></i></span>
+                    <div><strong>Document Verification Information</strong><p>Keep your supporting documents ready.</p><small>02 November 2026</small></div>
+                </div>
+
+                <div class="announcement">
+                    <span class="announcement-icon"><i class="fa-solid fa-calendar-check"></i></span>
+                    <div><strong>Public Service Appointment Updates</strong><p>Check appointment-related information.</p><small>30 October 2026</small></div>
+                </div>
+
+                <div class="announcement">
+                    <span class="announcement-icon"><i class="fa-solid fa-lightbulb"></i></span>
+                    <div><strong>Government Scheme Awareness</strong><p>Explore public welfare information.</p><small>28 October 2026</small></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card-box">
+                <div class="section-title mt-0"><h3>Government Scheme Highlights</h3></div>
+
+                <div class="scheme-grid">
+                    <div class="scheme-card">
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400" alt="Education assistance">
+                        <div><h4>Education Assistance</h4><p>Educational support opportunities. Eligibility information varies.</p><a href="404.html" class="btn-light-custom">View Details</a></div>
+                    </div>
+
+                    <div class="scheme-card">
+                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400" alt="Farmer welfare">
+                        <div><h4>Farmer Support</h4><p>Agricultural support information and eligibility guidance.</p><a href="404.html" class="btn-light-custom">View Details</a></div>
+                    </div>
+
+                    <div class="scheme-card">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400" alt="Women empowerment">
+                        <div><h4>Women Empowerment</h4><p>Sample welfare programme information.</p><a href="404.html" class="btn-light-custom">View Details</a></div>
+                    </div>
+
+                    <div class="scheme-card">
+                        <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=400" alt="Employment assistance">
+                        <div><h4>Employment Assistance</h4><p>Employment development opportunities.</p><a href="404.html" class="btn-light-custom">View Details</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="support-banner">
+        <div>
+            <h3>Need Help With a Government Service?</h3>
+            <p>Get guidance through our demonstration citizen support portal.</p>
+        </div>
+        <div class="support-buttons">
+            <a href="404.html">Help Center</a>
+            <a href="404.html">Submit Grievance</a>
+            <a href="404.html">Contact Support</a>
+        </div>
+    </div>
+
+</section>
+
+<!-- ================= SERVICES ================= -->
+
+<section class="page" id="services">
+
+    <div class="page-heading">
+        <h2>Explore Government Services</h2>
+        <p>Find essential citizen services and access application information in one place.</p>
+    </div>
+
+    <div class="category-grid" id="categoryGrid">
+
+        <button class="category-card" data-category="Identity"><i class="fa-solid fa-id-card"></i><span><strong>Identity Services</strong><small>Identification assistance</small></span></button>
+        <button class="category-card" data-category="Certificate"><i class="fa-solid fa-certificate"></i><span><strong>Certificate Services</strong><small>Citizen certificates</small></span></button>
+        <button class="category-card" data-category="Education"><i class="fa-solid fa-graduation-cap"></i><span><strong>Education Services</strong><small>Education assistance</small></span></button>
+        <button class="category-card" data-category="Employment"><i class="fa-solid fa-briefcase"></i><span><strong>Employment Services</strong><small>Career assistance</small></span></button>
+        <button class="category-card" data-category="Transport"><i class="fa-solid fa-car"></i><span><strong>Transport Services</strong><small>Vehicle services</small></span></button>
+        <button class="category-card" data-category="Welfare"><i class="fa-solid fa-hand-holding-heart"></i><span><strong>Public Welfare</strong><small>Public schemes</small></span></button>
+        <button class="category-card" data-category="Business"><i class="fa-solid fa-shop"></i><span><strong>Business Services</strong><small>Business guidance</small></span></button>
+        <button class="category-card" data-category="Land"><i class="fa-solid fa-map"></i><span><strong>Land & Property</strong><small>Property assistance</small></span></button>
+
+    </div>
+
+    <div class="filter-bar">
+        <input id="serviceSearch" class="form-control flex-grow-1" placeholder="Search by service name...">
+
+        <select id="serviceCategory" class="form-select" style="max-width:190px">
+            <option value="">All Categories</option>
+            <option>Identity</option><option>Certificate</option><option>Education</option><option>Employment</option>
+            <option>Transport</option><option>Welfare</option><option>Business</option><option>Land</option>
+        </select>
+
+        <select id="serviceSort" class="form-select" style="max-width:150px">
+            <option value="default">Default Order</option>
+            <option value="az">Sort A-Z</option>
+        </select>
+    </div>
+
+    <div class="service-grid" id="allServices"></div>
+
+</section>
+
+<!-- ================= APPLICATIONS ================= -->
+
+<section class="page" id="applications">
+
+    <div class="page-heading">
+        <h2>My Applications</h2>
+        <p>View your submitted requests and monitor their progress.</p>
+    </div>
+
+    <div class="grid-4 mb-4">
+        <div class="stat-card"><div><p>Total Applications</p><h3>08</h3></div><span class="stat-icon blue"><i class="fa-solid fa-folder"></i></span></div>
+        <div class="stat-card"><div><p>Approved</p><h3>04</h3></div><span class="stat-icon green"><i class="fa-solid fa-check"></i></span></div>
+        <div class="stat-card"><div><p>Under Review</p><h3>02</h3></div><span class="stat-icon orange"><i class="fa-solid fa-clock"></i></span></div>
+        <div class="stat-card"><div><p>Pending</p><h3>02</h3></div><span class="stat-icon red"><i class="fa-solid fa-hourglass"></i></span></div>
+    </div>
+
+    <div class="filter-bar">
+        <input id="applicationSearch" class="form-control flex-grow-1" placeholder="Search application ID or service...">
+
+        <select id="applicationFilter" class="form-select" style="max-width:190px">
+            <option value="">All Status</option>
+            <option>Approved</option>
+            <option>Pending</option>
+            <option>Under Review</option>
+            <option>Processing</option>
+            <option>Rejected</option>
+        </select>
+    </div>
+
+    <div class="table-wrap">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>APPLICATION ID</th>
+                    <th>SERVICE NAME</th>
+                    <th>DATE SUBMITTED</th>
+                    <th>LAST UPDATED</th>
+                    <th>STATUS</th>
+                    <th>ACTION</th>
+                </tr>
+            </thead>
+            <tbody id="applicationTable"></tbody>
+        </table>
+    </div>
+
+    <p class="text-muted mt-3" style="font-size:10px">All application records are fictional demonstration data.</p>
+
+</section>
+
+<!-- ================= GRIEVANCES ================= -->
+
+<section class="page" id="grievances">
+
+    <div class="page-heading">
+        <h2>Grievances & Citizen Support</h2>
+        <p>Submit service-related concerns and review your support requests.</p>
+    </div>
+
+    <div class="grid-4 mb-4">
+        <div class="stat-card"><div><p>Total Grievances</p><h3>05</h3></div><span class="stat-icon blue"><i class="fa-solid fa-comments"></i></span></div>
+        <div class="stat-card"><div><p>Resolved</p><h3>03</h3></div><span class="stat-icon green"><i class="fa-solid fa-check"></i></span></div>
+        <div class="stat-card"><div><p>In Progress</p><h3>01</h3></div><span class="stat-icon orange"><i class="fa-solid fa-spinner"></i></span></div>
+        <div class="stat-card"><div><p>Awaiting Response</p><h3>01</h3></div><span class="stat-icon red"><i class="fa-solid fa-clock"></i></span></div>
+    </div>
+
+    <div class="row g-3">
+
+        <div class="col-lg-8">
+            <div class="card-box">
+                <div class="section-title mt-0"><h3>Submit a Grievance</h3></div>
+
+                <form id="grievanceForm">
+
+                    <div class="row">
+
+                        <div class="col-md-6 form-group">
+                            <label class="form-label">Full Name *</label>
+                            <input class="form-control" required pattern="[A-Za-z ]+" placeholder="Enter full name">
+                        </div>
+
+                        <div class="col-md-6 form-group">
+                            <label class="form-label">Email Address *</label>
+                            <input type="email" class="form-control" required placeholder="example@email.com">
+                        </div>
+
+                        <div class="col-md-6 form-group">
+                            <label class="form-label">Phone Number *</label>
+                            <input class="form-control" required pattern="[0-9]{10}" maxlength="10" placeholder="10-digit mobile number">
+                        </div>
+
+                        <div class="col-md-6 form-group">
+                            <label class="form-label">Grievance Category *</label>
+                            <select class="form-select" required>
+                                <option value="">Select Category</option>
+                                <option>Application Delay</option>
+                                <option>Certificate Issue</option>
+                                <option>Document Verification</option>
+                                <option>Service Accessibility</option>
+                                <option>Technical Issue</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6 form-group">
+                            <label class="form-label">Related Department *</label>
+                            <select class="form-select" required>
+                                <option value="">Select Department</option>
+                                <option>Citizen Services</option>
+                                <option>Revenue Department</option>
+                                <option>Education Department</option>
+                                <option>Transport Department</option>
+                                <option>Public Welfare</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6 form-group">
+                            <label class="form-label">Application Reference ID</label>
+                            <input class="form-control" placeholder="CC202600101">
+                        </div>
+
+                        <div class="col-12 form-group">
+                            <label class="form-label">Subject *</label>
+                            <input class="form-control" required placeholder="Enter grievance subject">
+                        </div>
+
+                        <div class="col-12 form-group">
+                            <label class="form-label">Detailed Description *</label>
+                            <textarea class="form-control" rows="4" minlength="15" required placeholder="Explain your concern..."></textarea>
+                        </div>
+
+                        <div class="col-12 form-group">
+                            <label class="form-label">Attachment</label>
+                            <input type="file" class="form-control" accept=".pdf,.jpg,.jpeg,.png">
+                            <small class="text-muted">Demo only. Files are not uploaded.</small>
+                        </div>
+
+                    </div>
+
+                    <a href="404.html" class="btn-primary-custom">Submit Grievance <i class="fa-solid fa-arrow-right ms-1"></i></a>
+
+                </form>
+
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card-box">
+                <h3 style="font-size:14px;font-weight:800">Support Information</h3>
+
+                <div class="announcement"><span class="announcement-icon"><i class="fa-solid fa-circle-question"></i></span><div><strong>Frequently Asked Questions</strong><p>Find answers to common questions.</p><a href="404.html" class="text-primary small">Explore FAQs</a></div></div>
+
+                <div class="announcement"><span class="announcement-icon"><i class="fa-solid fa-phone"></i></span><div><strong>Contact Helpdesk</strong><p>Demo: +91 80000 12345</p></div></div>
+
+                <div class="announcement"><span class="announcement-icon"><i class="fa-solid fa-book"></i></span><div><strong>Service Guidelines</strong><p>Review sample service guidelines.</p><a href="404.html" class="text-primary small">Read Guidelines</a></div></div>
+
+                <div class="announcement"><span class="announcement-icon"><i class="fa-solid fa-laptop"></i></span><div><strong>Technical Assistance</strong><p>support@example.com (demo)</p></div></div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="section-title"><h3>Grievance History</h3></div>
+
+    <div class="table-wrap">
+        <table class="table">
+            <thead><tr><th>GRIEVANCE ID</th><th>SUBJECT</th><th>SUBMITTED DATE</th><th>DEPARTMENT</th><th>STATUS</th><th>ACTION</th></tr></thead>
+            <tbody>
+                <tr><td>GRV20260001</td><td>Application status enquiry</td><td>28 Oct 2026</td><td>Citizen Services</td><td><span class="status resolved">Resolved</span></td><td><a href="404.html" class="btn-light-custom">View</a></td></tr>
+                <tr><td>GRV20260002</td><td>Document verification delay</td><td>30 Oct 2026</td><td>Revenue Department</td><td><span class="status progress">In Progress</span></td><td><a href="404.html" class="btn-light-custom">View</a></td></tr>
+                <tr><td>GRV20260003</td><td>Portal accessibility issue</td><td>01 Nov 2026</td><td>Technical Support</td><td><span class="status awaiting">Awaiting Response</span></td><td><a href="404.html" class="btn-light-custom">View</a></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+</section>
+
+<!-- ================= PROFILE ================= -->
+
+<section class="page" id="profile">
+
+    <div class="page-heading">
+        <h2>My Citizen Profile</h2>
+        <p>Manage your personal information and account preferences.</p>
+    </div>
+
+    <div class="profile-hero">
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200" alt="Ajith Kumar">
+
+        <div>
+            <h3>Ajith Kumar <i class="fa-solid fa-circle-check"></i></h3>
+            <p>Citizen ID: CC202600184</p>
+            <p>Bengaluru, India</p>
+            <span style="font-size:10px;color:#a5ffcc">Verified Account</span>
+        </div>
+
+        <a href="404.html" class="btn-white">Edit Profile <i class="fa-solid fa-pen ms-1"></i></a>
+    </div>
+
+    <div class="row g-3">
+
+        <div class="col-lg-8">
+            <div class="card-box">
+
+                <div class="section-title mt-0"><h3>Personal Information</h3></div>
+
+                <form>
+                    <div class="row">
+
+                        <div class="col-md-6 form-group"><label class="form-label">Full Name</label><input class="form-control" value="Ajith Kumar" disabled></div>
+
+                        <div class="col-md-6 form-group"><label class="form-label">Date of Birth</label><input type="date" class="form-control" value="2000-06-15" disabled></div>
+
+                        <div class="col-md-6 form-group"><label class="form-label">Gender</label><select class="form-select" disabled><option>Male</option></select></div>
+
+                        <div class="col-md-6 form-group"><label class="form-label">Email Address</label><input class="form-control" value="ajith@example.com" disabled></div>
+
+                        <div class="col-md-6 form-group"><label class="form-label">Mobile Number</label><input class="form-control" value="9876543210" disabled></div>
+
+                        <div class="col-md-6 form-group"><label class="form-label">Address</label><input class="form-control" value="Sample Residential Street" disabled></div>
+
+                        <div class="col-md-4 form-group"><label class="form-label">City</label><input class="form-control" value="Bengaluru" disabled></div>
+
+                        <div class="col-md-4 form-group"><label class="form-label">State</label><input class="form-control" value="Karnataka" disabled></div>
+
+                        <div class="col-md-4 form-group"><label class="form-label">Postal Code</label><input class="form-control" value="560001" disabled></div>
+
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card-box">
+                <h3 style="font-size:14px;font-weight:800">Account Settings</h3>
+
+                <div class="setting-row"><div><strong>Change Password</strong><small>Update account password</small></div><a href="404.html" class="btn-light-custom">Manage</a></div>
+
+                <div class="setting-row"><div><strong>Notification Preferences</strong><small>Manage notifications</small></div><a href="404.html" class="btn-light-custom">Manage</a></div>
+
+                <div class="setting-row"><div><strong>Language Preferences</strong><small>English</small></div><a href="404.html" class="btn-light-custom">Change</a></div>
+
+                <div class="setting-row"><div><strong>Accessibility Settings</strong><small>Display preferences</small></div><a href="404.html" class="btn-light-custom">Manage</a></div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="section-title"><h3>Document Information</h3></div>
+
+    <div class="grid-4">
+        <div class="document-card"><i class="fa-solid fa-id-card"></i><strong>Identity Proof</strong><small><span class="status approved">Verified</span></small></div>
+        <div class="document-card"><i class="fa-solid fa-house"></i><strong>Address Proof</strong><small><span class="status approved">Uploaded</span></small></div>
+        <div class="document-card"><i class="fa-solid fa-graduation-cap"></i><strong>Education Certificate</strong><small><span class="status pending">Pending</span></small></div>
+        <div class="document-card"><i class="fa-solid fa-folder"></i><strong>Supporting Documents</strong><small><span class="status approved">Uploaded</span></small></div>
+    </div>
+
+    <div class="section-title"><h3>Recent Activity</h3></div>
+
+    <div class="card-box">
+        <div class="announcement"><span class="announcement-icon"><i class="fa-solid fa-file-circle-plus"></i></span><div><strong>Application submitted</strong><p>Income Certificate application created.</p><small>02 November 2026</small></div></div>
+        <div class="announcement"><span class="announcement-icon"><i class="fa-solid fa-circle-check"></i></span><div><strong>Document verification completed</strong><p>Sample identity verification completed.</p><small>01 November 2026</small></div></div>
+        <div class="announcement"><span class="announcement-icon"><i class="fa-solid fa-user-pen"></i></span><div><strong>Profile updated</strong><p>Citizen profile information updated.</p><small>29 October 2026</small></div></div>
+        <div class="announcement"><span class="announcement-icon"><i class="fa-solid fa-comment"></i></span><div><strong>Grievance response received</strong><p>A response was added to a sample support request.</p><small>28 October 2026</small></div></div>
+    </div>
+
+</section>
+
+</div>
+</main>
+
+<div class="modal fade" id="mainModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle">Details</h5>
+                <button class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+            <div class="modal-footer"><button class="btn-light-custom" data-bs-dismiss="modal">Close</button></div>
+        </div>
+    </div>
+</div>
+
+<div class="toast-msg" id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+// ==============================================
+// CIVIC CONNECT JAVASCRIPT
+// NO LOCAL STORAGE / NO SESSION STORAGE
+// ==============================================
+
+const $ = (s,root=document)=>root.querySelector(s);
+const $$ = (s,root=document)=>[...root.querySelectorAll(s)];
+
+function showPage(page){
+    const target=$('#'+page);
+    if(!target)return;
+
+    $$('.page').forEach(p=>p.classList.remove('active'));
+    target.classList.add('active');
+
+    $$('.side-link').forEach(link=>{
+        link.classList.toggle('active',link.dataset.page===page);
+    });
+
+    const titles={
+        dashboard:'Citizen Dashboard',
+        services:'Government Services',
+        applications:'My Applications',
+        grievances:'Grievances & Support',
+        profile:'My Citizen Profile'
+    };
+
+    $('#headerTitle').textContent=titles[page];
+
+    $('#sidebar').classList.remove('open');
+    $('#mobileOverlay').classList.remove('show');
+
+    window.scrollTo({top:0,behavior:'smooth'});
+}
+
+document.addEventListener('click',e=>{
+    const link=e.target.closest('[data-page]');
+    if(link){
+        e.preventDefault();
+        showPage(link.dataset.page);
+    }
+});
+
+$('#hamburger').addEventListener('click',()=>{
+    $('#sidebar').classList.add('open');
+    $('#mobileOverlay').classList.add('show');
+});
+
+$('#mobileOverlay').addEventListener('click',()=>{
+    $('#sidebar').classList.remove('open');
+    $('#mobileOverlay').classList.remove('show');
+});
+
+// SERVICE DATA
+
+const services=[
+['Aadhaar Assistance','Identity','fa-fingerprint','Identity service information and guidance.','Identity proof, address proof','7–15 days','https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=500'],
+['PAN Application Assistance','Identity','fa-id-card','PAN-related application information.','Identity proof, photograph','7–10 days','https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=500'],
+['Voter ID Assistance','Identity','fa-address-card','Voter registration guidance.','Age proof, address proof','15–30 days','https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=500'],
+['Passport Application Guidance','Identity','fa-passport','Passport application guidance.','Identity proof, address proof','15–30 days','https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=500'],
+['Income Certificate','Certificate','fa-file-invoice-dollar','Income certificate documentation information.','Income proof, address proof','7–15 days','https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=500'],
+['Community Certificate','Certificate','fa-certificate','Community certificate application guidance.','Identity proof, supporting records','10–20 days','https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=500'],
+['Nativity Certificate','Certificate','fa-file-circle-check','Nativity certificate requirements.','Address proof, supporting records','7–15 days','https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500'],
+['Birth Certificate','Certificate','fa-baby','Birth record service information.','Hospital record, identity proof','5–15 days','https://images.unsplash.com/photo-1492725764893-90b379c2b6e7?w=500'],
+['Death Certificate','Certificate','fa-file-medical','Death certificate guidance.','Medical record, applicant proof','5–15 days','https://images.unsplash.com/photo-1455390582262-044cdead277a?w=500'],
+['Driving Licence Assistance','Transport','fa-car','Driving licence application guidance.','Age proof, address proof','15–30 days','https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=500'],
+['Vehicle Registration Guidance','Transport','fa-car-side','Vehicle registration information.','Vehicle invoice, identity proof','7–15 days','https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=500'],
+['Scholarship Application','Education','fa-graduation-cap','Educational assistance information.','Academic records, income proof','15–30 days','https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=500'],
+['Employment Registration','Employment','fa-briefcase','Employment registration guidance.','Education proof, identity proof','5–10 days','https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=500'],
+['Farmer Scheme Information','Welfare','fa-tractor','Agricultural support programme information.','Farmer records, land details','Information service','https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=500'],
+['Property Document Assistance','Land','fa-house','Property document guidance.','Property records, identity proof','10–20 days','https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=500'],
+['Business Registration Guidance','Business','fa-shop','Business registration information.','Identity proof, business details','7–20 days','https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=500']
+];
+
+function card(s){
+return `<article class="service-card">
+<img src="${s[6]}" alt="${s[0]}">
+<div class="service-body">
+<span class="service-icon"><i class="fa-solid ${s[2]}"></i></span>
+<h4>${s[0]}</h4>
+<p>${s[3]}</p>
+<div class="service-meta">${s[4]}<br><br><i class="fa-regular fa-clock"></i> ${s[5]} (sample)</div>
+<a href="404.html" class="btn-primary-custom d-inline-block">Apply Now <i class="fa-solid fa-arrow-right"></i></a>
+<a href="404.html" class="btn-light-custom d-inline-block mt-2">View Details</a>
+</div>
+</article>`;
+}
+
+function renderServices(){
+$('#quickServices').innerHTML=services.slice(0,8).map(card).join('');
+$('#allServices').innerHTML=services.map(card).join('');
+}
+renderServices();
+
+// SERVICE FILTERS
+
+function filterServices(){
+let search=$('#serviceSearch').value.toLowerCase();
+let category=$('#serviceCategory').value;
+
+let list=services.filter(s=>
+s[0].toLowerCase().includes(search)&&
+(!category||s[1]===category)
+);
+
+if($('#serviceSort').value==='az'){
+list.sort((a,b)=>a[0].localeCompare(b[0]));
+}
+
+$('#allServices').innerHTML=list.length?
+list.map(card).join(''):
+'<div class="text-center p-5">No services found.</div>';
+}
+
+$('#serviceSearch').addEventListener('input',filterServices);
+$('#serviceCategory').addEventListener('change',filterServices);
+$('#serviceSort').addEventListener('change',filterServices);
+
+$('#categoryGrid').addEventListener('click',e=>{
+const btn=e.target.closest('[data-category]');
+if(!btn)return;
+
+$('#serviceCategory').value=btn.dataset.category;
+$$('.category-card').forEach(x=>x.classList.remove('selected'));
+btn.classList.add('selected');
+filterServices();
+});
+
+$('#dashboardSearchBtn').addEventListener('click',()=>{
+$('#serviceSearch').value=$('#dashboardSearch').value;
+showPage('services');
+filterServices();
+});
+
+$('#dashboardSearch').addEventListener('keydown',e=>{
+if(e.key==='Enter')$('#dashboardSearchBtn').click();
+});
+
+// APPLICATION DATA
+
+const applications=[
+['CC202600101','Income Certificate','02 Nov 2026','03 Nov 2026','Approved'],
+['CC202600102','Community Certificate','01 Nov 2026','03 Nov 2026','Under Review'],
+['CC202600103','Birth Certificate','30 Oct 2026','01 Nov 2026','Pending'],
+['CC202600104','PAN Service Assistance','29 Oct 2026','02 Nov 2026','Processing'],
+['CC202600105','Nativity Certificate','26 Oct 2026','30 Oct 2026','Approved'],
+['CC202600106','Scholarship Application','25 Oct 2026','02 Nov 2026','Under Review'],
+['CC202600107','Driving Licence Assistance','23 Oct 2026','24 Oct 2026','Pending'],
+['CC202600108','Voter ID Assistance','20 Oct 2026','22 Oct 2026','Rejected']
+];
+
+function statusClass(s){
+if(s==='Approved')return 'approved';
+if(s==='Pending')return 'pending';
+if(s==='Rejected')return 'rejected';
+if(s==='Processing')return 'processing';
+return 'review';
+}
+
+function renderApplications(){
+const search=$('#applicationSearch').value.toLowerCase();
+const filter=$('#applicationFilter').value;
+
+const list=applications.filter(a=>
+(a[0].toLowerCase().includes(search)||a[1].toLowerCase().includes(search))&&
+(!filter||a[4]===filter)
+);
+
+$('#applicationTable').innerHTML=list.length?list.map(a=>`
+<tr>
+<td><strong>${a[0]}</strong></td>
+<td>${a[1]}</td>
+<td>${a[2]}</td>
+<td>${a[3]}</td>
+<td><span class="status ${statusClass(a[4])}">${a[4]}</span></td>
+<td><a href="404.html" class="btn-light-custom">View Details</a></td>
+</tr>`).join(''):
+'<tr><td colspan="6" class="text-center p-4">No applications found.</td></tr>';
+
+$('#recentApplications').innerHTML=applications.slice(0,4).map(a=>`
+<tr>
+<td><strong>${a[0]}</strong></td>
+<td>${a[1]}</td>
+<td>${a[2]}</td>
+<td><span class="status ${statusClass(a[4])}">${a[4]}</span></td>
+<td><a href="404.html" class="btn-light-custom">View</a></td>
+</tr>`).join('');
+}
+
+$('#applicationSearch').addEventListener('input',renderApplications);
+$('#applicationFilter').addEventListener('change',renderApplications);
+renderApplications();
+
+// GRIEVANCE FORM VALIDATION
+// Successful submission is intentionally routed to 404.
+// No data is stored or submitted.
+
+$('#grievanceForm').addEventListener('submit',e=>{
+e.preventDefault();
+if(!e.currentTarget.checkValidity()){
+e.currentTarget.reportValidity();
+return;
+}
+window.location.href='404.html';
+});
+
+// HASH NAVIGATION
+
+function initialPage(){
+const page=location.hash.replace('#','');
+const valid=['dashboard','services','applications','grievances','profile'];
+showPage(valid.includes(page)?page:'dashboard');
+}
+
+window.addEventListener('hashchange',()=>{
+const page=location.hash.replace('#','');
+if(['dashboard','services','applications','grievances','profile'].includes(page)){
+showPage(page);
+}
+});
+
+initialPage();
+
+</script>
+
+</body>
+</html>
