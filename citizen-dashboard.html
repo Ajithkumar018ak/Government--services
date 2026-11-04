@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CIVIC CONNECT | Citizen Dashboard</title>
+<title>user Dashboard</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
@@ -284,6 +284,40 @@ padding:9px 12px;border-radius:7px;font-size:10px;font-weight:800;
 .profile-hero{flex-wrap:wrap}
 .profile-hero .btn-white{margin-left:0}
 }
+
+
+/* DASHBOARD BRAND LOGO */
+
+.brand {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    text-decoration: none;
+}
+
+.brand-logo {
+    width: 185px;
+    height: 55px;
+    object-fit: contain;
+    object-position: left center;
+    display: block;
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+    .brand-logo {
+        width: 155px;
+        height: 48px;
+    }
+}
+
+@media (max-width: 480px) {
+    .brand-logo {
+        width: 135px;
+        height: 42px;
+    }
+}
 </style>
 </head>
 
@@ -294,10 +328,13 @@ padding:9px 12px;border-radius:7px;font-size:10px;font-weight:800;
 <!-- SIDEBAR -->
 <aside class="sidebar" id="sidebar">
 
-    <a href="#dashboard" class="brand" data-page="dashboard">
-        <span class="brand-icon"><i class="fa-solid fa-landmark"></i></span>
-        <span class="brand-name">CIVIC CONNECT<small>CITIZEN SERVICE PORTAL</small></span>
-    </a>
+   <a href="#citizen-dashboard.html" class="brand" data-page="dashboard">
+
+    <img src="assets/logo2.webp"
+         alt="CivicConnect Logo"
+         class="brand-logo">
+
+</a>
 
     <div class="nav-label">MAIN MENU</div>
 
@@ -327,14 +364,14 @@ padding:9px 12px;border-radius:7px;font-size:10px;font-weight:800;
     <div class="sidebar-bottom">
 
         <div class="sidebar-user">
-            <img class="avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100" alt="Citizen avatar">
+            <img class="avatar" src="assets/t3.webp" alt="Citizen avatar">
             <div>
-                <strong>Ajith Kumar</strong>
+                
                 <small><i class="fa-solid fa-circle-check text-success"></i> Verified Citizen</small>
             </div>
         </div>
 
-        <a href="404.html" class="logout-btn">
+        <a href="index.html" class="logout-btn">
             <i class="fa-solid fa-right-from-bracket"></i>
             Logout
         </a>
@@ -345,14 +382,7 @@ padding:9px 12px;border-radius:7px;font-size:10px;font-weight:800;
 <!-- MAIN -->
 <main class="main">
 
-<div class="top-info">
-    <span><i class="fa-solid fa-landmark me-2"></i>Government Citizen Service Portal</span>
-    <div class="top-info-right">
-        <a href="404.html">Helpdesk</a>
-        <a href="404.html">Accessibility</a>
-        <a href="404.html">English <i class="fa-solid fa-chevron-down"></i></a>
-    </div>
-</div>
+
 
 <header class="header">
 
@@ -386,9 +416,9 @@ padding:9px 12px;border-radius:7px;font-size:10px;font-weight:800;
 
         <div class="dropdown">
             <div class="header-profile" data-bs-toggle="dropdown">
-                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100" alt="Citizen profile">
+                <img src="assets/t3.webp" alt="Citizen profile">
                 <div class="profile-details">
-                    <strong>Ajith Kumar</strong>
+                   
                     <small>Citizen Account</small>
                 </div>
                 <i class="fa-solid fa-chevron-down small"></i>
@@ -430,7 +460,7 @@ padding:9px 12px;border-radius:7px;font-size:10px;font-weight:800;
             </div>
         </div>
 
-        <img class="hero-image" src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600" alt="Government building">
+        <img class="hero-image" src="assets/a2.webp" alt="Government building">
     </div>
 
     <div class="section-title"><h3>Citizen Overview</h3></div>
@@ -465,9 +495,9 @@ padding:9px 12px;border-radius:7px;font-size:10px;font-weight:800;
 
         <div class="col-lg-4">
             <div class="profile-summary">
-                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150" alt="Ajith Kumar">
+                <img src="assets/t3.webp" alt="Ajith Kumar">
                 <div>
-                    <h4>Ajith Kumar <i class="fa-solid fa-circle-check verified"></i></h4>
+              
                     <p>Citizen ID: CC202600184</p>
                     <p>Bengaluru, India</p>
                     <span class="verified">Verified Account</span>
@@ -479,14 +509,14 @@ padding:9px 12px;border-radius:7px;font-size:10px;font-weight:800;
 
     <div class="section-title">
         <h3>Quick Government Services</h3>
-        <a href="#services" data-page="services">View All Services <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="404.html" data-page="services">View All Services <i class="fa-solid fa-arrow-right"></i></a>
     </div>
 
     <div class="service-grid" id="quickServices"></div>
 
     <div class="section-title">
         <h3>My Recent Applications</h3>
-        <a href="#applications" data-page="applications">View All</a>
+        <a href="404.html" data-page="applications">View All</a>
     </div>
 
     <div class="table-wrap">
@@ -538,22 +568,22 @@ padding:9px 12px;border-radius:7px;font-size:10px;font-weight:800;
 
                 <div class="scheme-grid">
                     <div class="scheme-card">
-                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400" alt="Education assistance">
+                        <img src="assets/u17.webp" alt="Education assistance">
                         <div><h4>Education Assistance</h4><p>Educational support opportunities. Eligibility information varies.</p><a href="404.html" class="btn-light-custom">View Details</a></div>
                     </div>
 
                     <div class="scheme-card">
-                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400" alt="Farmer welfare">
+                        <img src="assets/u18.webp" alt="Farmer welfare">
                         <div><h4>Farmer Support</h4><p>Agricultural support information and eligibility guidance.</p><a href="404.html" class="btn-light-custom">View Details</a></div>
                     </div>
 
                     <div class="scheme-card">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400" alt="Women empowerment">
+                        <img src="assets/u19.webp" alt="Women empowerment">
                         <div><h4>Women Empowerment</h4><p>Sample welfare programme information.</p><a href="404.html" class="btn-light-custom">View Details</a></div>
                     </div>
 
                     <div class="scheme-card">
-                        <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=400" alt="Employment assistance">
+                        <img src="assets/u20.webp" alt="Employment assistance">
                         <div><h4>Employment Assistance</h4><p>Employment development opportunities.</p><a href="404.html" class="btn-light-custom">View Details</a></div>
                     </div>
                 </div>
@@ -963,22 +993,22 @@ $('#mobileOverlay').addEventListener('click',()=>{
 // SERVICE DATA
 
 const services=[
-['Aadhaar Assistance','Identity','fa-fingerprint','Identity service information and guidance.','Identity proof, address proof','7–15 days','https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=500'],
-['PAN Application Assistance','Identity','fa-id-card','PAN-related application information.','Identity proof, photograph','7–10 days','https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=500'],
-['Voter ID Assistance','Identity','fa-address-card','Voter registration guidance.','Age proof, address proof','15–30 days','https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=500'],
-['Passport Application Guidance','Identity','fa-passport','Passport application guidance.','Identity proof, address proof','15–30 days','https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=500'],
-['Income Certificate','Certificate','fa-file-invoice-dollar','Income certificate documentation information.','Income proof, address proof','7–15 days','https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=500'],
-['Community Certificate','Certificate','fa-certificate','Community certificate application guidance.','Identity proof, supporting records','10–20 days','https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=500'],
-['Nativity Certificate','Certificate','fa-file-circle-check','Nativity certificate requirements.','Address proof, supporting records','7–15 days','https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500'],
-['Birth Certificate','Certificate','fa-baby','Birth record service information.','Hospital record, identity proof','5–15 days','https://images.unsplash.com/photo-1492725764893-90b379c2b6e7?w=500'],
-['Death Certificate','Certificate','fa-file-medical','Death certificate guidance.','Medical record, applicant proof','5–15 days','https://images.unsplash.com/photo-1455390582262-044cdead277a?w=500'],
-['Driving Licence Assistance','Transport','fa-car','Driving licence application guidance.','Age proof, address proof','15–30 days','https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=500'],
-['Vehicle Registration Guidance','Transport','fa-car-side','Vehicle registration information.','Vehicle invoice, identity proof','7–15 days','https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=500'],
-['Scholarship Application','Education','fa-graduation-cap','Educational assistance information.','Academic records, income proof','15–30 days','https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=500'],
-['Employment Registration','Employment','fa-briefcase','Employment registration guidance.','Education proof, identity proof','5–10 days','https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=500'],
-['Farmer Scheme Information','Welfare','fa-tractor','Agricultural support programme information.','Farmer records, land details','Information service','https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=500'],
-['Property Document Assistance','Land','fa-house','Property document guidance.','Property records, identity proof','10–20 days','https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=500'],
-['Business Registration Guidance','Business','fa-shop','Business registration information.','Identity proof, business details','7–20 days','https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=500']
+['Aadhaar Assistance','Identity','fa-fingerprint','Identity service information and guidance.','Identity proof, address proof','7–15 days','assets/u1.webp'],
+['PAN Application Assistance','Identity','fa-id-card','PAN-related application information.','Identity proof, photograph','7–10 days','assets/u2.webp'],
+['Voter ID Assistance','Identity','fa-address-card','Voter registration guidance.','Age proof, address proof','15–30 days','assets/u3.webp'],
+['Passport Application Guidance','Identity','fa-passport','Passport application guidance.','Identity proof, address proof','15–30 days','assets/u4.webp'],
+['Income Certificate','Certificate','fa-file-invoice-dollar','Income certificate documentation information.','Income proof, address proof','7–15 days','assets/u5.webp'],
+['Community Certificate','Certificate','fa-certificate','Community certificate application guidance.','Identity proof, supporting records','10–20 days','assets/u6.webp'],
+['Nativity Certificate','Certificate','fa-file-circle-check','Nativity certificate requirements.','Address proof, supporting records','7–15 days','assets/u7.webp'],
+['Birth Certificate','Certificate','fa-baby','Birth record service information.','Hospital record, identity proof','5–15 days','assets/u8.webp'],
+['Death Certificate','Certificate','fa-file-medical','Death certificate guidance.','Medical record, applicant proof','5–15 days','assets/u9.webp'],
+['Driving Licence Assistance','Transport','fa-car','Driving licence application guidance.','Age proof, address proof','15–30 days','assets/u10.webp'],
+['Vehicle Registration Guidance','Transport','fa-car-side','Vehicle registration information.','Vehicle invoice, identity proof','7–15 days','assets/u11.webp'],
+['Scholarship Application','Education','fa-graduation-cap','Educational assistance information.','Academic records, income proof','15–30 days','assets/u12.webp'],
+['Employment Registration','Employment','fa-briefcase','Employment registration guidance.','Education proof, identity proof','5–10 days','assets/u13.webp'],
+['Farmer Scheme Information','Welfare','fa-tractor','Agricultural support programme information.','Farmer records, land details','Information service','assets/u14.webp'],
+['Property Document Assistance','Land','fa-house','Property document guidance.','Property records, identity proof','10–20 days','assets/u15.webp'],
+['Business Registration Guidance','Business','fa-shop','Business registration information.','Identity proof, business details','7–20 days','assets/u16.webp']
 ];
 
 function card(s){
