@@ -11877,3 +11877,91 @@ summary:focus-visible {
         height: 48px;
     }
 }
+
+
+
+
+
+
+
+
+
+/* ==========================================
+   CIVICCONNECT — FAST PHASE ANIMATION FIX
+========================================== */
+
+/* Fast building reveal */
+.phase-building .government-building {
+    animation-duration: 0.5s, 3s !important;
+    animation-delay: 0s, 0.5s !important;
+}
+
+/* Fast justice reveal */
+.phase-justice .justice-statue {
+    animation-duration: 0.5s !important;
+}
+
+/* Coins and documents appear immediately */
+.phase-documents .rupee-coin,
+.phase-documents .constitution-book,
+.phase-documents .floating-document {
+    opacity: 1;
+}
+
+/* Fast service reveal */
+.phase-services .government-service-icon {
+    animation-duration: 0.4s, 3s !important;
+}
+
+.phase-services .india-network {
+    animation-duration: 0.5s !important;
+}
+
+.phase-services .preloader-center-text {
+    animation-duration: 0.5s !important;
+}
+
+/* Fast verification */
+.phase-verified .verification-check {
+    animation-duration: 0.4s !important;
+}
+
+/* Fast final logo */
+.phase-logo .preloader-final-logo {
+    animation-duration: 0.5s !important;
+}
+
+/* Fast transitions */
+.civic-preloader {
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.civic-preloader.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Progress animation */
+.loader-progress-fill {
+    transition: width 0.08s linear;
+}
+
+/* Mobile optimization */
+@media (max-width: 600px) {
+    .preloader-stage {
+        transform: translate(-50%, -50%) scale(0.72);
+    }
+
+    .preloader-inner {
+        min-height: 500px;
+        padding: 25px 0 20px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .civic-preloader * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}

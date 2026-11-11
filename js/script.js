@@ -384,6 +384,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const loginModalOverlay = select("#loginModalOverlay");
 
     const loginForm = select("#loginForm");
+    const loginEmail = select("#loginEmail");
+    const loginPassword = select("#loginPassword");
     const loginMessage = select("#loginMessage");
 
     let previousBodyOverflow = "";
@@ -401,6 +403,7 @@ document.addEventListener("DOMContentLoaded", () => {
         loginModal.setAttribute("aria-hidden", "false");
 
         document.body.style.overflow = "hidden";
+        document.body.classList.add("modal-open");
 
         setTimeout(() => {
 
@@ -419,6 +422,7 @@ document.addEventListener("DOMContentLoaded", () => {
         loginModal.setAttribute("aria-hidden", "true");
 
         document.body.style.overflow = previousBodyOverflow;
+        document.body.classList.remove("modal-open");
 
     }
 
@@ -455,7 +459,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
             tab.classList.add("active");
 
-            currentLoginType = tab.dataset.loginTab;
+            currentLoginType = tab.dataset.loginTab || "citizen";
+
+            if (loginEmail) {
+                loginEmail.placeholder = currentLoginType === "admin"
+                    ? "Enter admin email address"
+                    : "Enter your email address";
+            }
+
+            if (loginPassword) {
+                loginPassword.placeholder = currentLoginType === "admin"
+                    ? "Enter admin password"
+                    : "Enter your password";
+            }
 
             if (loginMessage) {
 
@@ -478,9 +494,10 @@ document.addEventListener("DOMContentLoaded", () => {
     ====================================================== */
 
     const passwordToggle = select("#passwordToggle");
-    const loginPassword = select("#loginPassword");
 
-    passwordToggle?.addEventListener("click", () => {
+    passwordToggle?.addEventListener("click", (event) => {
+
+        event.preventDefault();
 
         if (!loginPassword) return;
 
@@ -504,40 +521,83 @@ document.addEventListener("DOMContentLoaded", () => {
        08. DEMO LOGIN FORM
     ====================================================== */
 
-    loginForm?.addEventListener("submit", event => {
+    function extractUserNameFromEmail(email) {
+        if (!email || typeof email !== "string") return "User";
+        const atIndex = email.indexOf("@");
+        const rawLocal = atIndex !== -1 ? email.slice(0, atIndex) : email;
+        const words = rawLocal
+            .split(/[._\-\s]+/)
+            .map(w => w.trim())
+            .filter(Boolean);
+        if (words.length === 0) return "User";
+        return words
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+            .join(" ");
+    }
+
+    function showLoginMessage(message, type) {
+        if (!loginMessage) return;
+        loginMessage.textContent = message;
+        loginMessage.className = type ? `login-message ${type}` : "login-message";
+    }
+
+    // Check if loggedInName is on the current page and URL has user query parameter
+    const initialNameElement = select("#loggedInName");
+    if (initialNameElement) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const userParam = urlParams.get("user") || urlParams.get("name") || urlParams.get("username") || urlParams.get("email");
+        if (userParam) {
+            initialNameElement.textContent = extractUserNameFromEmail(userParam);
+        }
+    }
+
+    loginForm?.addEventListener("submit", function (event) {
 
         event.preventDefault();
 
-        if (!loginForm.checkValidity()) {
+        const email = loginEmail ? loginEmail.value.trim() : "";
+        const password = loginPassword ? loginPassword.value.trim() : "";
 
-            loginForm.reportValidity();
-
+        if (!email || !password) {
+            showLoginMessage("Please enter your email and password.", "error");
             return;
-
         }
 
-        const email = select("#loginEmail")?.value.trim();
-
-        const password = select("#loginPassword")?.value;
-
-        if (!email || !password) return;
-
-        if (loginMessage) {
-
-            loginMessage.textContent =
-                `${currentLoginType.toUpperCase()} demo login submitted.`;
-
-            loginMessage.classList.add("success");
-
+        if (loginEmail && typeof loginEmail.checkValidity === "function" && !loginEmail.checkValidity()) {
+            showLoginMessage("Please enter a valid email address.", "error");
+            loginEmail.focus();
+            return;
         }
 
-        showToast(
-            "Demo Login",
-            "This is a frontend demo. No real authentication is connected."
-        );
+        const userName = extractUserNameFromEmail(email);
+
+        // Update welcome heading immediately if present on current page
+        const nameElement = document.querySelector("#loggedInName");
+        if (nameElement) {
+            nameElement.textContent = userName;
+        }
+
+        const successText = currentLoginType === "admin"
+            ? "Admin login successful. Redirecting..."
+            : "Citizen login successful. Redirecting...";
+        showLoginMessage(successText, "success");
+
+        if (typeof showToast === "function") {
+            showToast(
+                "Login Successful",
+                `Welcome back, ${userName}!`
+            );
+        }
+
+        setTimeout(() => {
+            closeLoginModal();
+            const destination = currentLoginType === "admin"
+                ? "admin-dashboard.html"
+                : "citizen-dashboard.html";
+            window.location.href = `${destination}?user=${encodeURIComponent(userName)}`;
+        }, 700);
 
     });
-
 
     /* =====================================================
        09. GLOBAL SEARCH MODAL
@@ -2556,324 +2616,137 @@ drawerLoginBtn?.addEventListener("click", () => {
 
 
 
-/* =====================================================
-   CIVICCONNECT — LOGIN, SEARCH & NOTIFICATION SYSTEM
-===================================================== */
+/* ==========================================
+   CIVICCONNECT — FAST CINEMATIC PRELOADER
+   COMPLETE PHASE CONTROLLER
+========================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* =====================================================
-       1. LOGIN MODAL ELEMENTS
-    ===================================================== */
+    const preloader = document.getElementById("preloader");
 
-    const loginModal = document.getElementById("loginModal");
-    const loginModalOpen = document.getElementById("loginModalOpen");
-    const loginModalClose = document.getElementById("loginModalClose");
-    const loginModalOverlay = document.getElementById("loginModalOverlay");
+    if (!preloader) return;
 
-    const loginForm = document.getElementById("loginForm");
-    const loginEmail = document.getElementById("loginEmail");
-    const loginPassword = document.getElementById("loginPassword");
-    const loginMessage = document.getElementById("loginMessage");
+    const progressFill = document.getElementById("loaderProgressFill");
+    const percentText = document.getElementById("loaderPercent");
+    const statusText = document.getElementById("loaderStatusText");
 
-    const loginTabs = document.querySelectorAll("[data-login-tab]");
-    const passwordToggle = document.getElementById("passwordToggle");
+    const phases = [
+        {
+            name: "phase-building",
+            progress: 15,
+            text: "ESTABLISHING GOVERNMENT"
+        },
+        {
+            name: "phase-justice",
+            progress: 30,
+            text: "JUSTICE AND EQUALITY"
+        },
+        {
+            name: "phase-documents",
+            progress: 50,
+            text: "DIGITAL DOCUMENTS"
+        },
+        {
+            name: "phase-services",
+            progress: 75,
+            text: "CONNECTING SERVICES"
+        },
+        {
+            name: "phase-verified",
+            progress: 90,
+            text: "SECURITY VERIFIED"
+        },
+        {
+            name: "phase-logo",
+            progress: 100,
+            text: "GOVERNMENT SERVICES. SIMPLIFIED."
+        }
+    ];
 
-    let selectedRole = "citizen";
+    const phaseDuration = 550;
+    const exitDuration = 400;
 
+    const phaseClasses = phases.map(phase => phase.name);
 
-    /* =====================================================
-       2. OPEN & CLOSE LOGIN MODAL
-    ===================================================== */
+    let currentPhase = 0;
+    let completed = false;
 
-    function openLoginModal() {
-        if (!loginModal) return;
+    document.body.classList.add("preloader-active");
 
-        loginModal.classList.add("active");
-        loginModal.setAttribute("aria-hidden", "false");
-        document.body.classList.add("modal-open");
+    function showPhase(index) {
 
-        setTimeout(() => loginEmail?.focus(), 200);
-    }
-
-    function closeLoginModal() {
-        if (!loginModal) return;
-
-        loginModal.classList.remove("active");
-        loginModal.setAttribute("aria-hidden", "true");
-        document.body.classList.remove("modal-open");
-    }
-
-    loginModalOpen?.addEventListener("click", openLoginModal);
-    loginModalClose?.addEventListener("click", closeLoginModal);
-    loginModalOverlay?.addEventListener("click", closeLoginModal);
-
-
-    /* =====================================================
-       3. CITIZEN / ADMIN TAB SWITCHING
-    ===================================================== */
-
-    loginTabs.forEach(tab => {
-
-        tab.addEventListener("click", () => {
-
-            selectedRole = tab.dataset.loginTab;
-
-            loginTabs.forEach(item => {
-                item.classList.remove("active");
-            });
-
-            tab.classList.add("active");
-
-            if (loginMessage) {
-                loginMessage.textContent = "";
-            }
-
-            if (selectedRole === "admin") {
-                loginEmail.placeholder = "Enter admin email address";
-                loginPassword.placeholder = "Enter admin password";
-            } else {
-                loginEmail.placeholder = "Enter your email address";
-                loginPassword.placeholder = "Enter your password";
-            }
-
+        phaseClasses.forEach(className => {
+            preloader.classList.remove(className);
         });
 
-    });
+        const phase = phases[index];
 
+        preloader.classList.add(phase.name);
 
-    /* =====================================================
-       4. PASSWORD SHOW / HIDE
-    ===================================================== */
-
-    passwordToggle?.addEventListener("click", () => {
-
-        if (!loginPassword) return;
-
-        const isPassword = loginPassword.type === "password";
-
-        loginPassword.type = isPassword ? "text" : "password";
-
-        passwordToggle.innerHTML = isPassword
-            ? '<i class="fa-regular fa-eye-slash"></i>'
-            : '<i class="fa-regular fa-eye"></i>';
-
-        passwordToggle.setAttribute(
-            "aria-label",
-            isPassword ? "Hide password" : "Show password"
-        );
-
-    });
-
-
-    /* =====================================================
-       5. LOGIN FORM SUBMISSION
-    ===================================================== */
-
-    loginForm?.addEventListener("submit", event => {
-
-        event.preventDefault();
-
-        const email = loginEmail.value.trim();
-        const password = loginPassword.value.trim();
-
-        if (!email || !password) {
-            showLoginMessage("Please enter your email and password.", "error");
-            return;
+        if (progressFill) {
+            progressFill.style.width = phase.progress + "%";
         }
 
-        if (!loginEmail.checkValidity()) {
-            showLoginMessage("Please enter a valid email address.", "error");
-            loginEmail.focus();
-            return;
+        if (percentText) {
+            percentText.textContent = phase.progress;
         }
 
-        if (selectedRole === "citizen") {
-
-            showLoginMessage("Citizen login successful. Redirecting...", "success");
-
-            setTimeout(() => {
-                window.location.href = "citizen-dashboard.html";
-            }, 700);
-
-        } else if (selectedRole === "admin") {
-
-            showLoginMessage("Admin login successful. Redirecting...", "success");
-
-            setTimeout(() => {
-                window.location.href = "admin-dashboard.html";
-            }, 700);
-
+        if (statusText) {
+            statusText.textContent = phase.text;
         }
-
-    });
-
-
-    function showLoginMessage(message, type) {
-
-        if (!loginMessage) return;
-
-        loginMessage.textContent = message;
-        loginMessage.className = "login-message " + type;
-
     }
 
+    function nextPhase() {
 
-    /* =====================================================
-       6. LOGIN FROM MOBILE DRAWER
-    ===================================================== */
+        if (completed) return;
 
-    const drawerLoginBtn = document.getElementById("drawerLoginBtn");
+        if (currentPhase < phases.length) {
 
-    drawerLoginBtn?.addEventListener("click", () => {
+            showPhase(currentPhase);
 
-        document.getElementById("mobileOverlay")?.classList.remove("active");
-        document.getElementById("mobileDrawer")?.classList.remove("active");
+            currentPhase++;
 
-        document.body.classList.remove("drawer-open");
+            setTimeout(nextPhase, phaseDuration);
 
-        openLoginModal();
-
-    });
-
-
-    /* =====================================================
-       7. SEARCH MODAL
-    ===================================================== */
-
-    const searchModal = document.getElementById("searchModal");
-    const headerSearchBtn = document.getElementById("headerSearchBtn");
-    const searchModalClose = document.getElementById("searchModalClose");
-    const searchModalOverlay = document.getElementById("searchModalOverlay");
-    const globalSearchForm = document.getElementById("globalSearchForm");
-    const globalSearchInput = document.getElementById("globalSearchInput");
-
-    function openSearchModal() {
-
-        searchModal?.classList.add("active");
-        searchModal?.setAttribute("aria-hidden", "false");
-
-        setTimeout(() => globalSearchInput?.focus(), 200);
-
-    }
-
-    function closeSearchModal() {
-
-        searchModal?.classList.remove("active");
-        searchModal?.setAttribute("aria-hidden", "true");
-
-    }
-
-    headerSearchBtn?.addEventListener("click", openSearchModal);
-    searchModalClose?.addEventListener("click", closeSearchModal);
-    searchModalOverlay?.addEventListener("click", closeSearchModal);
-
-
-    /* =====================================================
-       8. GLOBAL SEARCH
-    ===================================================== */
-
-    globalSearchForm?.addEventListener("submit", event => {
-
-        event.preventDefault();
-
-        const searchValue = globalSearchInput.value.trim().toLowerCase();
-
-        if (!searchValue) {
-            globalSearchInput.focus();
-            return;
-        }
-
-        const searchRoutes = [
-            {
-                keywords: ["aadhaar", "aadhar"],
-                url: "services.html#aadhaar"
-            },
-            {
-                keywords: ["pan", "pan card"],
-                url: "services.html#pan"
-            },
-            {
-                keywords: ["certificate", "birth certificate"],
-                url: "services.html#certificates"
-            },
-            {
-                keywords: ["scheme", "government scheme"],
-                url: "schemes.html"
-            },
-            {
-                keywords: ["contact", "support", "help"],
-                url: "contact.html"
-            },
-            {
-                keywords: ["about"],
-                url: "about.html"
-            }
-        ];
-
-        const matchedRoute = searchRoutes.find(route =>
-            route.keywords.some(keyword => searchValue.includes(keyword))
-        );
-
-        closeSearchModal();
-
-        if (matchedRoute) {
-            window.location.href = matchedRoute.url;
         } else {
-            showToast(
-                "No Results Found",
-                "We couldn't find a matching service. Try another keyword."
-            );
+
+            finishPreloader();
+
         }
-
-    });
-
-
-    /* =====================================================
-       9. TOAST NOTIFICATION
-    ===================================================== */
-
-    const toastNotification = document.getElementById("toastNotification");
-    const toastTitle = document.getElementById("toastTitle");
-    const toastMessage = document.getElementById("toastMessage");
-    const toastClose = document.getElementById("toastClose");
-
-    let toastTimer;
-
-    function showToast(title, message) {
-
-        if (!toastNotification) return;
-
-        if (toastTitle) toastTitle.textContent = title;
-        if (toastMessage) toastMessage.textContent = message;
-
-        toastNotification.classList.add("active");
-
-        clearTimeout(toastTimer);
-
-        toastTimer = setTimeout(() => {
-            toastNotification.classList.remove("active");
-        }, 4000);
-
     }
 
-    toastClose?.addEventListener("click", () => {
-        toastNotification?.classList.remove("active");
-        clearTimeout(toastTimer);
-    });
+    function finishPreloader() {
 
+        if (completed) return;
 
-    /* =====================================================
-       10. ESCAPE KEY
-    ===================================================== */
+        completed = true;
 
-    document.addEventListener("keydown", event => {
-
-        if (event.key === "Escape") {
-            closeLoginModal();
-            closeSearchModal();
+        if (progressFill) {
+            progressFill.style.width = "100%";
         }
 
-    });
+        if (percentText) {
+            percentText.textContent = "100";
+        }
+
+        if (statusText) {
+            statusText.textContent = "SERVICES READY";
+        }
+
+        setTimeout(() => {
+
+            preloader.classList.add("is-hidden");
+
+            document.body.classList.remove("preloader-active");
+
+            setTimeout(() => {
+                preloader.style.display = "none";
+            }, exitDuration);
+
+        }, 350);
+    }
+
+    nextPhase();
 
 });

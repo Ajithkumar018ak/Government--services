@@ -445,7 +445,7 @@ padding:9px 12px;border-radius:7px;font-size:10px;font-weight:800;
         <div class="hero-content">
             <div class="hero-tag">YOUR DIGITAL CITIZEN SERVICE PORTAL</div>
 
-            <h1>Welcome to Civic Connect</h1>
+       <h1>Welcome back, <span id="loggedInName">User</span>!</h1>
 
             <p>Access essential government services, submit applications, track your requests, and stay updated through one convenient citizen portal.</p>
 
@@ -1159,6 +1159,38 @@ showPage(page);
 });
 
 initialPage();
+
+// ==============================================
+// DASHBOARD USERNAME INITIALIZATION
+// ==============================================
+
+function initDashboardUser() {
+    const params = new URLSearchParams(window.location.search);
+    const userParam = params.get('user') || params.get('name') || params.get('username') || params.get('email');
+    if (userParam) {
+        const cleanInput = userParam.includes('@') ? userParam.split('@')[0] : userParam;
+        const words = cleanInput
+            .split(/[._\-\s]+/)
+            .map(w => w.trim())
+            .filter(Boolean);
+        if (words.length > 0) {
+            const formattedName = words
+                .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+                .join(' ');
+            const loggedInNameEl = document.getElementById('loggedInName');
+            if (loggedInNameEl) {
+                loggedInNameEl.textContent = formattedName;
+            }
+        }
+    }
+}
+
+initDashboardUser();
+
+
+
+
+
 
 </script>
 
